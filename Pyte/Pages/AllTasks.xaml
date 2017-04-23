@@ -1,0 +1,34 @@
+﻿<Page x:Class="Pyte.Pages.AllTasks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pyte.Pages"
+      xmlns:models="clr-namespace:Pyte.Models"
+      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="AllTasks">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
+            <Grid Name="MissionsList">
+                <TreeView ></TreeView>
+                <Button Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Добавить"
+                        Height="40" Width="100" Margin="3" Click="Add_Mission_Click" />
+            </Grid>
+        </Border>
+        <Controls:FlyoutsControl Grid.Column="1" Margin="2">
+            <Controls:Flyout Name="AddNewMission" Header="{Binding ElementName=Lol, Path=Content}" HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         Theme="Light"
+                                         Position="Right" AreAnimationsEnabled="True" HorizontalContentAlignment="Stretch" >
+                <Grid Background="Blue"></Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Grid>
+</Page>

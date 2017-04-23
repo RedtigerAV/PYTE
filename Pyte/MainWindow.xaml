@@ -45,38 +45,24 @@
             </Controls:Flyout>
         </Controls:FlyoutsControl>
     </Controls:MetroWindow.Flyouts>
-    
-    <Grid>
-        <Controls:MetroAnimatedSingleRowTabControl TabStripPlacement="Left" 
+
+    <Grid Background="{StaticResource MainBackground}">
+        <Controls:MetroAnimatedSingleRowTabControl Background="Transparent"
+                                                   TabStripPlacement="Left" 
                                                    Controls:TabControlHelper.Underlined="TabPanel" 
                                                    Controls:TabControlHelper.UnderlineSelectedBrush="{StaticResource MainThemeColor}">
             <TabItem Header="Все задачи">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
-                        <Button Name="Lol" Content="Lol" Height="40" Width="90" Click="Lol_Click" />
-                    </Border>
-                    <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-                        <Controls:Flyout Name="AllTasksFlyout" Header="{Binding ElementName=Lol, Path=Content}" HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         Theme="Light"
-                                         Position="Right" AreAnimationsEnabled="True" HorizontalContentAlignment="Stretch" >
-                            <Grid Background="AliceBlue"></Grid>
-                        </Controls:Flyout>
-                    </Controls:FlyoutsControl>
-                </Grid>
+                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
             </TabItem>
-            <TabItem Header="Сегодня" Foreground="{StaticResource MainThemeColor}">
+            <TabItem Header="Сегодня">
                 <TextBox Height="40" Width="160" Controls:TextBoxHelper.Watermark="Find me"></TextBox>
             </TabItem>
             <TabItem Header="Завтра"></TabItem>
             <TabItem Header="Неделя"></TabItem>
             <TabItem Header="Важное"></TabItem>
-            <TabItem Header="Просроченное"></TabItem>
+            <TabItem Header="Заметки"></TabItem>
             <TabItem Header="Документы"></TabItem>
+            <TabItem Header="Расписание"></TabItem>
             <TabItem Header="Списки"></TabItem>
             <TabItem Header="Теги"></TabItem>
         </Controls:MetroAnimatedSingleRowTabControl>

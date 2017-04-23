@@ -26,9 +26,5 @@ namespace Pyte {
         private void Open_Calendar(object sender, RoutedEventArgs e) {
             CalendarFlyouts.IsOpen = true;
         }
-
-        private void Lol_Click(object sender, RoutedEventArgs e) {
-            AllTasksFlyout.IsOpen = true;
-        }
     }
 }

@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pyte"
+                    xmlns:models="clr-namespace:Pyte.Models"
+                    xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+
+    <Style TargetType="TreeView">
+        <Setter Property="ItemsSource" Value="{Binding}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                    <Border Name="MissionBlock" Margin="2" HorizontalAlignment="Stretch"
+                                BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" Height="40" 
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <Border Name="mask" Background="White" CornerRadius="5"/>
+
+                            <Grid Background="#F2F8EA" Name="MissionGrid">
+
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=mask}"/>
+                                </Grid.OpacityMask>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Name="IsImportantColumn" Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Name="CheckBoxColumn" Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Name="NameAndDateColumn" Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Name="ButtonsColumn" Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Name="DateColumn" Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle Grid.Column="0" HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch" RadiusX="3" RadiusY="3" Fill="Gray"></Rectangle>
+                            
+                                <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1"></CheckBox>
+                                <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Vardana" 
+                                           Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center" Foreground="Black"></TextBlock>
+                                <StackPanel Name="PropertyWithButtons" Grid.Column="3" Orientation="Horizontal" 
+                                            VerticalAlignment="Center" Visibility="Collapsed">
+                                    <Button Name="AddSubMission" Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    FontSize="36" HorizontalContentAlignment="Center" 
+                                            VerticalContentAlignment="Center">]</Button>
+                                    <Button Name="MakeMissionFinish"  Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    FontSize="36" HorizontalContentAlignment="Center" 
+                                            VerticalContentAlignment="Center">W</Button>
+                                    <Button Name="MakeMissionImportant"  Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                                    FontSize="33" HorizontalContentAlignment="Center"
+                                            Foreground="Black"
+                                            VerticalContentAlignment="Center">7</Button>
+                                
+                                </StackPanel>
+                                <TextBlock Grid.Column="4" Text="Дата" VerticalAlignment="Center" Margin="2" Foreground="Black"></TextBlock>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <HierarchicalDataTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=MissionGrid, Path=IsMouseOver}" Value="True"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PropertyWithButtons" Property="Visibility" Value="Visible"></Setter>
+                        </MultiDataTrigger>
+                    </HierarchicalDataTemplate.Triggers>
+                </HierarchicalDataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

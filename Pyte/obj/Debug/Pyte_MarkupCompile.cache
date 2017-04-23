@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\App.xaml
-4-1219004623
+15-2021916107
 
-5-2017746502
+16-122221882
 151216609145
-Colors.xaml;MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
+Colors.xaml;MainWindow.xaml;Pages\AllTasks.xaml;Pages\Documents.xaml;Pages\Importantly.xaml;Pages\Notes.xaml;Pages\Schedule.xaml;Pages\TasksList.xaml;Pages\TasksTag.xaml;Pages\Today.xaml;Pages\Tomorrow.xaml;Pages\Week.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Styles\TreeViewStyle.xaml;
 
 False
 

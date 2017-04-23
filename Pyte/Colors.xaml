@@ -4,4 +4,5 @@
 
     <SolidColorBrush x:Key="MainThemeColor" Color="#27AE61" />
     <SolidColorBrush x:Key="SeparatorGreyColor" Color="#FFC5C4C4" />
+    <SolidColorBrush x:Key="MainBackground" Color="#F6F7F2" />
 </ResourceDictionary>
