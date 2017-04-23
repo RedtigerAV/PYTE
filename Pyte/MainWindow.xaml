@@ -1,0 +1,84 @@
+﻿<Controls:MetroWindow x:Class="Pyte.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pyte"
+        mc:Ignorable="d"
+        xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Pyte" VerticalAlignment="Center" Height="600" Width="800" ResizeMode="CanResizeWithGrip" GlowBrush="{StaticResource MainThemeColor}"
+                      WindowTitleBrush="{StaticResource MainThemeColor}" Icon="Icons/icon-green.ico"
+                      RightWindowCommandsOverlayBehavior="Never" MinHeight="500" MinWidth="500">
+
+    <Controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Image Source="Icons/rsz_icon-transparent.png" />
+        </DataTemplate>
+    </Controls:MetroWindow.IconTemplate>
+    
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Click="Open_Calendar">Calendar</Button>
+            <Button>Settings</Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout Name="CalendarFlyouts" Position="Right" AreAnimationsEnabled="True"
+                             Header="Calendar" Theme="Inverse" IsModal="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Calendar Grid.Row="0"></Calendar>
+                    <StackPanel Grid.Row="1" Height="auto" Orientation="Horizontal">
+                        <Button Height="40" Width="40" FontFamily="/Resources/#Entypo"
+                                Margin="5" Style="{DynamicResource MetroCircleButtonStyle}"
+                                FontSize="36">]</Button>
+                        <Button Height="40" Width="40" FontFamily="/Resources/#Entypo"
+                                Margin="5" Style="{DynamicResource MetroCircleButtonStyle}"
+                                FontSize="36">\</Button>
+                    </StackPanel>
+                </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    
+    <Grid>
+        <Controls:MetroAnimatedSingleRowTabControl TabStripPlacement="Left" 
+                                                   Controls:TabControlHelper.Underlined="TabPanel" 
+                                                   Controls:TabControlHelper.UnderlineSelectedBrush="{StaticResource MainThemeColor}">
+            <TabItem Header="Все задачи">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
+                        <Button Name="Lol" Content="Lol" Height="40" Width="90" Click="Lol_Click" />
+                    </Border>
+                    <Controls:FlyoutsControl Grid.Column="1" Margin="2">
+                        <Controls:Flyout Name="AllTasksFlyout" Header="{Binding ElementName=Lol, Path=Content}" HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         Theme="Light"
+                                         Position="Right" AreAnimationsEnabled="True" HorizontalContentAlignment="Stretch" >
+                            <Grid Background="AliceBlue"></Grid>
+                        </Controls:Flyout>
+                    </Controls:FlyoutsControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сегодня" Foreground="{StaticResource MainThemeColor}">
+                <TextBox Height="40" Width="160" Controls:TextBoxHelper.Watermark="Find me"></TextBox>
+            </TabItem>
+            <TabItem Header="Завтра"></TabItem>
+            <TabItem Header="Неделя"></TabItem>
+            <TabItem Header="Важное"></TabItem>
+            <TabItem Header="Просроченное"></TabItem>
+            <TabItem Header="Документы"></TabItem>
+            <TabItem Header="Списки"></TabItem>
+            <TabItem Header="Теги"></TabItem>
+        </Controls:MetroAnimatedSingleRowTabControl>
+    </Grid>
+</Controls:MetroWindow>

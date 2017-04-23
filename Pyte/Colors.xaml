@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pyte">
+
+    <SolidColorBrush x:Key="MainThemeColor" Color="#27AE61" />
+    <SolidColorBrush x:Key="SeparatorGreyColor" Color="#FFC5C4C4" />
+</ResourceDictionary>
