@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Pyte.Models {
-    public class Mission {
+    public class Mission: INotifyPropertyChanged {
+
+        private static long id_counter = 1;
 
         #region Constructors
         public Mission (string name) {
             Name = name;
+            ID = id_counter;
+            id_counter++;
             IsChecked = false;
             IsImportant = false;
+            Children = new ObservableCollection<Mission>();
+            Marks = new ObservableCollection<string>();
 
         }
         #endregion
@@ -27,6 +34,19 @@ namespace Pyte.Models {
             }
             set {
                 name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+        #endregion
+
+        #region ID
+        private long id;
+        public long ID {
+            get {
+                return id;
+            }
+            set {
+                id = value;
             }
         }
         #endregion
@@ -39,6 +59,7 @@ namespace Pyte.Models {
             }
             set {
                 startDate = value;
+                OnPropertyChanged("StartDate");
             }
         }
         #endregion
@@ -51,6 +72,7 @@ namespace Pyte.Models {
             }
             set {
                 finishDate = value;
+                OnPropertyChanged("FinishDate");
             }
         }
         #endregion
@@ -63,6 +85,7 @@ namespace Pyte.Models {
             }
             set {
                 isChecked = value;
+                OnPropertyChanged("IsChecked");
             }
         }
         #endregion
@@ -75,6 +98,7 @@ namespace Pyte.Models {
             }
             set {
                 isImportant = value;
+                OnPropertyChanged("IsImportant");
             }
         }
         #endregion
@@ -87,6 +111,7 @@ namespace Pyte.Models {
             }
             set {
                 isFinished = value;
+                OnPropertyChanged("IsFinished");
             }
         }
         #endregion
@@ -116,6 +141,14 @@ namespace Pyte.Models {
         #endregion
 
         #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
     }
 }

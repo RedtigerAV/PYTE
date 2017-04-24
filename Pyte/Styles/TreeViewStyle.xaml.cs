@@ -13,22 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Pyte.Models;
+using Pyte.Pages;
 using System.Collections.ObjectModel;
 
-namespace Pyte.Pages {
-    /// <summary>
-    /// Логика взаимодействия для AllTasks.xaml
-    /// </summary>
-    public partial class AllTasks : Page {
-
-        public AllTasks() {
+namespace Pyte.Styles {
+    public partial class TreeViewStyle {
+        public TreeViewStyle() {
             InitializeComponent();
-            MissionsList.DataContext = TreeViewModels.mis;
         }
 
-        private void Add_Mission_Click(object sender, RoutedEventArgs e) {
-            AddNewMission.Header = "Новая задача";
-            AddNewMission.IsOpen = true;
+        private void MakeMissionImportant_Click(object sender, RoutedEventArgs e) {
+            long id = (long)((Button)e.OriginalSource).Tag;
+            Methods.idToMission[id].IsImportant = !Methods.idToMission[id].IsImportant;
         }
     }
 }

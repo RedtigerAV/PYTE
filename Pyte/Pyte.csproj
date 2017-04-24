@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\TreeViewModels.cs" />
+    <Compile Include="Styles\TreeViewStyle.xaml.cs">
+      <DependentUpon>TreeViewStyle.xaml</DependentUpon>
+    </Compile>
     <Page Include="Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

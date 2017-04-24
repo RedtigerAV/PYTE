@@ -41,3 +41,4 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\Today.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\Tomorrow.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\Week.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\TreeViewStyle.baml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\TreeViewStyle.g.cs
