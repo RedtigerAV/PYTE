@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pyte.Styles"
+                    xmlns:models="clr-namespace:Pyte.Models"
+                    xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    x:Class="Pyte.Styles.NewTaskFlyoutStyle"
+                    x:ClassModifier="public">
+
+    <Style x:Key="FlyoutForTask" TargetType="Controls:Flyout">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Position" Value="Right" />
+        <Setter Property="Theme" Value="Light" />
+        <Setter Property="AreAnimationsEnabled" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+    </Style>
+</ResourceDictionary>

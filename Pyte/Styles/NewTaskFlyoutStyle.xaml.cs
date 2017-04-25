@@ -15,17 +15,12 @@ using System.Windows.Shapes;
 using Pyte.Models;
 using Pyte.Pages;
 using System.Collections.ObjectModel;
+using MahApps.Metro.Controls;
 
 namespace Pyte.Styles {
-    public partial class TreeViewStyle {
-        public TreeViewStyle() {
+    public partial class NewTaskFlyoutStyle {
+        public NewTaskFlyoutStyle() {
             InitializeComponent();
-
-        }
-
-        private void MakeMissionImportant_Click(object sender, RoutedEventArgs e) {
-            long id = (long)((Button)e.OriginalSource).Tag;
-            Methods.idToMission[id].IsImportant = !Methods.idToMission[id].IsImportant;
         }
     }
 }

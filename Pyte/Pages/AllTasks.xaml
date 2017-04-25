@@ -17,17 +17,25 @@
         </Grid.ColumnDefinitions>
         <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
             <Grid Name="MissionsList">
-                <TreeView ></TreeView>
-                <Button Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Добавить"
-                        Height="40" Width="100" Margin="3" Click="Add_Mission_Click" />
+                <TreeView SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
+                <Button Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                        Content="]"
+                        FontFamily="/Resources/#Entypo"
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                        Height="50" Width="50" Margin="15" FontSize="45"
+                        Background="{StaticResource MainThemeColor}"
+                        BorderThickness="1" Click="Add_Mission_Click" Style="{DynamicResource MetroCircleButtonStyle}"></Button>
             </Grid>
         </Border>
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="AddNewMission" Header="{Binding ElementName=Lol, Path=Content}" HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         Theme="Light"
-                                         Position="Right" AreAnimationsEnabled="True" HorizontalContentAlignment="Stretch" >
-                <Grid Background="Blue"></Grid>
+            <Controls:Flyout Name="AddNewMission" Header="Новая задача" Style="{StaticResource FlyoutForTask}">
+                <Frame Source="NewTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+
+        <Controls:FlyoutsControl Grid.Column="1" Margin="2">
+            <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForTask}">
+                <Frame Source="EditingTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
     </Grid>

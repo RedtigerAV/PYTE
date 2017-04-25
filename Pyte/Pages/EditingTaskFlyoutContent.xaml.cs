@@ -12,20 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Pyte.Models;
-using Pyte.Pages;
-using System.Collections.ObjectModel;
 
-namespace Pyte.Styles {
-    public partial class TreeViewStyle {
-        public TreeViewStyle() {
+namespace Pyte.Pages {
+    /// <summary>
+    /// Логика взаимодействия для EditingTaskFlyoutContent.xaml
+    /// </summary>
+    public partial class EditingTaskFlyoutContent : Page {
+        public EditingTaskFlyoutContent() {
             InitializeComponent();
-
-        }
-
-        private void MakeMissionImportant_Click(object sender, RoutedEventArgs e) {
-            long id = (long)((Button)e.OriginalSource).Tag;
-            Methods.idToMission[id].IsImportant = !Methods.idToMission[id].IsImportant;
         }
     }
 }

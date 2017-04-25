@@ -1,0 +1,42 @@
+﻿<Page x:Class="Pyte.Pages.NewTaskFlyoutContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pyte.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="NewTaskFlyoutContent"
+      xmlns:models="clr-namespace:Pyte.Models"
+      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+
+    <Grid Background="White">
+        <Grid Name="MissionProperty" DataContext="{Binding NeedToNotify, Source={x:Static models:NeedToNotifySelectedItem.Instance}, Mode=OneWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana" FontSize="15" 
+                                   Text="Название: " Margin="4"/>
+            <TextBox Name="MissionNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" 
+                                 Controls:TextBoxHelper.ClearTextButton="True"
+                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" />
+
+            <Button Name="SaveNewMissionButton" Grid.Row="1" Margin="7" Content="Сохранить" Click="SaveNewMissionButton_Click"
+                    Background="{StaticResource MainThemeColor}"/>
+
+        </Grid>
+    </Grid>
+</Page>

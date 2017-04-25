@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Pyte.Models;
 using System.Collections.ObjectModel;
+using Pyte.Pages;
 
 namespace Pyte.Pages {
     /// <summary>
@@ -27,8 +28,22 @@ namespace Pyte.Pages {
         }
 
         private void Add_Mission_Click(object sender, RoutedEventArgs e) {
-            AddNewMission.Header = "Новая задача";
+            if (EditingSelectedMission.IsOpen) {
+                EditingSelectedMission.IsOpen = false;
+            }
             AddNewMission.IsOpen = true;
+        }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e) {
+            if (AddNewMission.IsOpen) {
+                AddNewMission.IsOpen = false;
+            }
+
+            TreeView tr = (TreeView)sender;
+            Mission SelectedMission = (Mission)tr.SelectedItem;
+            NeedToNotifySelectedItem.Instance.NeedToNotify = SelectedMission;
+            EditingSelectedMission.IsOpen = true;
+
         }
     }
 }

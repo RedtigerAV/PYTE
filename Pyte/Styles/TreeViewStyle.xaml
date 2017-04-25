@@ -35,7 +35,7 @@
 
                                 <Rectangle Name="RectImportant" Grid.Column="0" HorizontalAlignment="Stretch"
                                            VerticalAlignment="Stretch" RadiusX="3" RadiusY="3" Fill="Gray"></Rectangle>
-                            
+
                                 <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
                                 <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Vardana" 
                                            Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center" Foreground="Black"></TextBlock>
@@ -47,26 +47,29 @@
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <Button Name="AddSubMission" Grid.Column="0" Height="36" Width="36" FontFamily="/Resources/#Entypo"
                                             Margin="1, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
                                             FontSize="36" HorizontalContentAlignment="Center" 
                                             VerticalContentAlignment="Center" BorderThickness="0" 
-                                            Foreground="{StaticResource ButtonsIsNotMouseOver}">]</Button>
-                                    
+                                            Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                            ToolTip="Добавить подзадачу">]</Button>
+
                                     <Button Name="MakeMissionFinish" Grid.Column="1" Height="36" Width="36" FontFamily="/Resources/#Entypo"
                                             Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
                                             FontSize="36" HorizontalContentAlignment="Center" 
                                             VerticalContentAlignment="Center" BorderThickness="0"
-                                            Foreground="{StaticResource ButtonsIsNotMouseOver}">W</Button>
-                                    
+                                            Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                            ToolTip="Завершить">W</Button>
+
                                     <Button Name="MakeMissionImportant" Grid.Column="2" Click="MakeMissionImportant_Click" Tag="{Binding Path=ID}" 
                                             Height="36" Width="36" FontFamily="/Resources/#Entypo"
                                             Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
                                             FontSize="33" HorizontalContentAlignment="Center"
                                             VerticalContentAlignment="Center" BorderThickness="0"
-                                            Foreground="{StaticResource ButtonsIsNotMouseOver}">7</Button>
-                                
+                                            Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                            ToolTip="Важное">7</Button>
+
                                 </Grid>
                                 <TextBlock Grid.Column="4" Text="{Binding Path=ID}" VerticalAlignment="Center" Margin="2" Foreground="Black"></TextBlock>
 
@@ -80,12 +83,12 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PropertyWithButtons" Property="Visibility" Value="Visible"></Setter>
                         </MultiDataTrigger>
-                        
+
                         <DataTrigger Binding="{Binding Path=IsImportant}" Value="True">
                             <Setter TargetName="MakeMissionImportant" Property="Foreground" Value="{StaticResource MissionIsImportantColor}" />
                             <Setter TargetName="RectImportant" Property="Fill" Value="{StaticResource MissionIsImportantColor}" />
                         </DataTrigger>
-                        
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding ElementName=MakeMissionImportant, Path=IsMouseOver}" Value="True" />
@@ -101,11 +104,11 @@
                         <DataTrigger Binding="{Binding ElementName=MakeMissionFinish, Path=IsMouseOver}" Value="True">
                             <Setter TargetName="MakeMissionFinish" Property="Foreground" Value="Black" />
                         </DataTrigger>
-                        
+
                     </HierarchicalDataTemplate.Triggers>
                 </HierarchicalDataTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>
