@@ -14,5 +14,25 @@
         <Setter Property="AreAnimationsEnabled" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding NotifyOpenFlyout, UpdateSourceTrigger=PropertyChanged, Source={x:Static models:NeedToNotifySelectedItem.Instance}}" Value="True">
+                <Setter Property="IsOpen" Value="True" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="FlyoutForEditTask" TargetType="Controls:Flyout">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Position" Value="Right" />
+        <Setter Property="Theme" Value="Light" />
+        <Setter Property="AreAnimationsEnabled" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding NotifyOpenFlyout, UpdateSourceTrigger=PropertyChanged, Source={x:Static models:NeedToNotifySelectedItem.Instance}}" Value="True">
+                <Setter Property="IsOpen" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

@@ -25,8 +25,20 @@ namespace Pyte.Pages {
         }
 
         private void SaveNewMissionButton_Click(object sender, RoutedEventArgs e) {
-            Mission newMission = new Mission(MissionNameTextBox.Text);
+            Mission newMission;
+            if (NeedToNotifySelectedItem.Instance.NotifyOpenFlyout) {
+                NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = false;
+                long id = (long)((Button)e.OriginalSource).Tag;
+                newMission = new Mission(MissionNameTextBox.Text);
+                newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
+                Methods.idToMission[newMission.ID] = newMission;
+                Methods.idToMission[id].Children.Add(newMission);
+                return;
+            }
+            newMission = new Mission(MissionNameTextBox.Text);
+            newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
             TreeViewModels.mis.Add(newMission);
+            Methods.idToMission[newMission.ID] = newMission;
         }
     }
 }

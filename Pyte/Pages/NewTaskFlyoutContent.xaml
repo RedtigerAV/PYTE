@@ -8,10 +8,11 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="NewTaskFlyoutContent"
       xmlns:models="clr-namespace:Pyte.Models"
-      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      KeepAlive="False">
 
     <Grid Background="White">
-        <Grid Name="MissionProperty" DataContext="{Binding NeedToNotify, Source={x:Static models:NeedToNotifySelectedItem.Instance}, Mode=OneWay}">
+        <Grid Name="MissionProperty">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -29,12 +30,22 @@
             
             <TextBlock Grid.Row="0" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
-                                   Text="Название: " Margin="4"/>
-            <TextBox Name="MissionNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" 
+                                   Text="Название: " Margin="4" VerticalAlignment="Center"/>
+            <TextBox Name="MissionNameTextBox" Grid.Column="1" Grid.Row="0" 
                                  Controls:TextBoxHelper.ClearTextButton="True"
-                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" />
+                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" VerticalAlignment="Center"/>
 
-            <Button Name="SaveNewMissionButton" Grid.Row="1" Margin="7" Content="Сохранить" Click="SaveNewMissionButton_Click"
+            <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana" FontSize="15" 
+                                   Text="Важное: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Controls:ToggleSwitch Name="ToggleSwitchIsImportant" Grid.Row="1" Grid.Column="1"
+                                   IsChecked="False" SwitchForeground="{StaticResource MainThemeColor}" 
+                                   OnLabel="" OffLabel="" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="0, 0, 3, 0"/>
+
+            <Button Name="SaveNewMissionButton" Tag="{Binding NotifyParentID, Source={x:Static models:NeedToNotifySelectedItem.Instance}}" Height="40" Width="100"
+                    Grid.Row="7" Margin="15" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Content="Сохранить" Click="SaveNewMissionButton_Click"
                     Background="{StaticResource MainThemeColor}"/>
 
         </Grid>

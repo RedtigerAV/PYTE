@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Pyte.Pages"
       xmlns:models="clr-namespace:Pyte.Models"
+      xmlns:styles="clr-namespace:Pyte.Styles"
       xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
@@ -17,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
             <Grid Name="MissionsList">
-                <TreeView SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
+                <TreeView Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
                 <Button Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
                         FontFamily="/Resources/#Entypo"
@@ -34,7 +35,7 @@
         </Controls:FlyoutsControl>
 
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForTask}">
+            <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForEditTask}">
                 <Frame Source="EditingTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>

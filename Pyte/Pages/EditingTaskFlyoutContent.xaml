@@ -30,12 +30,21 @@
 
             <TextBlock Grid.Row="0" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
-                                   Text="Название: " Margin="4"/>
+                                   Text="Название: " Margin="4" VerticalAlignment="Center"/>
             <TextBox Name="MissionNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" 
                                  Controls:TextBoxHelper.ClearTextButton="True"
-                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" />
+                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" VerticalAlignment="Center"/>
 
-            <Button Name="SaveNewMissionButton" Grid.Row="1" Margin="7" Content="Сохранить"
+            <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana" FontSize="15" 
+                                   Text="Важное: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Controls:ToggleSwitch Name="ToggleSwitchIsImportant" Grid.Row="1" Grid.Column="1"
+                                   IsChecked="{Binding IsImportant, UpdateSourceTrigger=PropertyChanged}" SwitchForeground="{StaticResource MainThemeColor}" 
+                                   OnLabel="" OffLabel="" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Margin="0, 0, 3, 0"/>
+
+            <Button Name="SaveNewMissionButton" Height="40" Width="100" Grid.Row="7" Grid.Column="1" Margin="15"
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Сохранить"
                     Background="{StaticResource MainThemeColor}"/>
 
         </Grid>

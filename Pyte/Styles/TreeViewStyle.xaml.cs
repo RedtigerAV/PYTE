@@ -27,5 +27,11 @@ namespace Pyte.Styles {
             long id = (long)((Button)e.OriginalSource).Tag;
             Methods.idToMission[id].IsImportant = !Methods.idToMission[id].IsImportant;
         }
+
+        private void AddSubMission_Click(object sender, RoutedEventArgs e) {
+            long id = (long)((Button)e.OriginalSource).Tag;
+            NeedToNotifySelectedItem.Instance.NotifyParentID = id;
+            NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = true;
+        }
     }
 }

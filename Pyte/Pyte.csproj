@@ -68,6 +68,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Methods.cs" />
+    <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
