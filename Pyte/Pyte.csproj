@@ -71,6 +71,7 @@
     <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
+    <Compile Include="Models\WorksWithFlyouts.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
     </Compile>

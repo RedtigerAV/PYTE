@@ -15,6 +15,7 @@ namespace Pyte.Models {
         public Mission (string name) {
             Name = name;
             ID = id_counter;
+            IsSelected = false;
             id_counter++;
             IsChecked = false;
             IsImportant = false;
@@ -35,6 +36,19 @@ namespace Pyte.Models {
             set {
                 name = value;
                 OnPropertyChanged("Name");
+            }
+        }
+        #endregion
+
+        #region IsSelected
+        private bool isSelected;
+        public bool IsSelected {
+            get {
+                return isSelected;
+            }
+            set {
+                isSelected = value;
+                OnPropertyChanged("IsSelected");
             }
         }
         #endregion

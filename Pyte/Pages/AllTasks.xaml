@@ -29,13 +29,15 @@
             </Grid>
         </Border>
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="AddNewMission" Header="Новая задача" Style="{StaticResource FlyoutForTask}">
+            <Controls:Flyout Name="AddNewMission" Header="Новая задача" Style="{StaticResource FlyoutForTask}"
+                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}">
                 <Frame Source="NewTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
 
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForEditTask}">
+            <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForEditTask}"
+                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}">
                 <Frame Source="EditingTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>

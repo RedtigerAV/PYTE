@@ -25,6 +25,17 @@ namespace Pyte.Pages {
         public AllTasks() {
             InitializeComponent();
             MissionsList.DataContext = TreeViewModels.mis;
+            WorksWithFlyouts.CloseNewTaskFlyout += WorksWithFlyouts_CloseNewTaskFlyout;
+            NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += Instance_OpenNewTaskFlyout;
+        }
+
+        private void WorksWithFlyouts_CloseNewTaskFlyout() {
+            AddNewMission.IsOpen = false;
+        }
+
+        private void Instance_OpenNewTaskFlyout() {
+            AddNewMission.IsOpen = true;
+            EditingSelectedMission.IsOpen = false;
         }
 
         private void Add_Mission_Click(object sender, RoutedEventArgs e) {

@@ -7,6 +7,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Pyte.Models {
+
+    public delegate void OpenNewTaskFlyoutEventHadler();
+
     public class NeedToNotifySelectedItem : INotifyPropertyChanged {
 
         public static NeedToNotifySelectedItem Instance { get; } = new NeedToNotifySelectedItem();
@@ -37,9 +40,14 @@ namespace Pyte.Models {
             }
             set {
                 TreeViewModels.OpenFlyout = value;
+                if (value) {
+                    OpenNewTaskFlyout();
+                }
                 OnPropertyChanged("NotifyOpenFlyout");
             }
         }
+
+        public event OpenNewTaskFlyoutEventHadler OpenNewTaskFlyout;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

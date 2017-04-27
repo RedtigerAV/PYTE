@@ -33,12 +33,14 @@ namespace Pyte.Pages {
                 newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
                 Methods.idToMission[newMission.ID] = newMission;
                 Methods.idToMission[id].Children.Add(newMission);
+                WorksWithFlyouts.CloseFlyout();
                 return;
             }
             newMission = new Mission(MissionNameTextBox.Text);
             newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
             TreeViewModels.mis.Add(newMission);
             Methods.idToMission[newMission.ID] = newMission;
+            WorksWithFlyouts.CloseFlyout();
         }
     }
 }

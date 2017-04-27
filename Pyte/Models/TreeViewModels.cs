@@ -18,7 +18,7 @@ namespace Pyte.Models {
 
         public static long ParentID { get; set; }
 
-        public static bool OpenFlyout = false;
+        public static bool OpenFlyout { get; set; } = false;
         #endregion
 
         public static ObservableCollection<Mission> mis = new ObservableCollection<Mission> {
@@ -35,6 +35,7 @@ namespace Pyte.Models {
                 new Mission("1.1.1"), new Mission("1.1.2"),
             };
             mis[0].Children[1].Children = kis;
+            mis[0].IsSelected = true;
             Methods.MakeConnectWithDict(mis);
         }
     }
