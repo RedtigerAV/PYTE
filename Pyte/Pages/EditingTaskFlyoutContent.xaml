@@ -29,11 +29,11 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Foreground="{StaticResource ButtonsIsNotMouseOver}"
-                                   FontFamily="Vardana" FontSize="15" 
-                                   Text="Название: " Margin="4" VerticalAlignment="Center"/>
+                                   FontFamily="Vardana"
+                                   Text="Название: " Margin="4" FontSize="15" VerticalAlignment="Center"/>
             <TextBox Name="MissionNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" 
                                  Controls:TextBoxHelper.ClearTextButton="True"
-                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 0, 3, 0" VerticalAlignment="Center"/>
+                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1" VerticalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
@@ -41,7 +41,21 @@
             <Controls:ToggleSwitch Name="ToggleSwitchIsImportant" Grid.Row="1" Grid.Column="1"
                                    IsChecked="{Binding IsImportant, UpdateSourceTrigger=PropertyChanged}" SwitchForeground="{StaticResource MainThemeColor}" 
                                    OnLabel="" OffLabel="" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Margin="0, 0, 3, 0"/>
+                                   Margin="0, 1, 3, 1"/>
+
+            <TextBlock Grid.Row="2" Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana" FontSize="15" 
+                                   Text="Начало: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Controls:DateTimePicker Name="StartDateTimePicker" SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" Grid.Column="1"
+                                     Margin="0, 1, 3, 1" Culture="RU" 
+                                     FontFamily="Vardana" IsTodayHighlighted="True"/>
+
+            <TextBlock Grid.Row="3" Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana" FontSize="15" 
+                                   Text="Конец: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Controls:DateTimePicker Name="FinishDateTimePicker" SelectedDate="{Binding FinishDate, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
+                                     Margin="0, 1, 3, 1" Culture="RU" 
+                                     FontFamily="Vardana"/>
 
             <Button Name="SaveNewMissionButton" Height="40" Width="100" Grid.Row="7" Grid.Column="1" Margin="15"
                     HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Сохранить"

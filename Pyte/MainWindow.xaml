@@ -58,13 +58,7 @@
             <TabItem Header="Сегодня">
                 <TextBox Height="40" Width="160" Controls:TextBoxHelper.Watermark="Find me"></TextBox>
             </TabItem>
-            <TabItem>
-                <TabItem.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="Завтра" FontFamily="Vardana" FontSize="25" />
-                    </DataTemplate>
-                </TabItem.HeaderTemplate>
-            </TabItem>
+            <TabItem Header="Завтра"></TabItem>
             <TabItem Header="Неделя"></TabItem>
             <TabItem Header="Важное"></TabItem>
             <TabItem Header="Заметки"></TabItem>

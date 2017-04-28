@@ -68,6 +68,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ExpirationConverter.cs" />
+    <Compile Include="Converters\FinishDateToStringConverter.cs" />
+    <Compile Include="Converters\IsMaxDateConverter.cs" />
+    <Compile Include="Converters\IsMinDateConverter.cs" />
+    <Compile Include="Converters\StartDateToStringConverter.cs" />
+    <Compile Include="Converters\TaskNameConverter.cs" />
     <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />

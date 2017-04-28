@@ -20,6 +20,9 @@ namespace Pyte {
     /// </summary>
     public partial class MainWindow : MetroWindow {
         public MainWindow() {
+            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("ru-RU");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             InitializeComponent();
         }
 

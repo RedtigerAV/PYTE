@@ -24,7 +24,7 @@ namespace Pyte.Pages {
 
         public AllTasks() {
             InitializeComponent();
-            MissionsList.DataContext = TreeViewModels.mis;
+            MissionsList.DataContext = TreeViewModels.AllMissionCollection;
             WorksWithFlyouts.CloseNewTaskFlyout += WorksWithFlyouts_CloseNewTaskFlyout;
             NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += Instance_OpenNewTaskFlyout;
         }

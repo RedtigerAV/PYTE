@@ -3,8 +3,12 @@
                     xmlns:local="clr-namespace:Pyte"
                     xmlns:models="clr-namespace:Pyte.Models"
                     xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    xmlns:converters="clr-namespace:Pyte.Converters"
                     x:Class="Pyte.Styles.TreeViewStyle"
                     x:ClassModifier="public">
+
+    <converters:ExpirationConverter x:Key="expirationConverter" />
+    <converters:IsMinDateConverter x:Key="isMinDateConverter" />
 
     <Style TargetType="TreeView">
         <Setter Property="ItemsSource" Value="{Binding}" />
@@ -17,6 +21,9 @@
                                 BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" Height="40" 
                             SnapsToDevicePixels="True">
                         <Grid>
+                            <Grid.Resources>
+                                <converters:TaskNameConverter x:Key="ConvertName" />
+                            </Grid.Resources>
                             <Border Name="mask" Background="White" CornerRadius="5"/>
 
                             <Grid Background="#F2F8EA" Name="MissionGrid">
@@ -71,7 +78,21 @@
                                             ToolTip="Важное">7</Button>
 
                                 </Grid>
-                                <TextBlock Grid.Column="4" Text="{Binding Path=ID}" VerticalAlignment="Center" Margin="2" Foreground="Black"></TextBlock>
+                                <Grid Grid.Column="4" HorizontalAlignment="Right" Width="auto" Height="auto">
+                                    <Grid.Resources>
+                                        <converters:StartDateToStringConverter x:Key="StartDateToString"/>
+                                        <converters:FinishDateToStringConverter x:Key="FinishDateToString" />
+                                    </Grid.Resources>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Name="StartDateTextBlock" Foreground="Black" Grid.Row="0"
+                                               Margin="1, 1, 2, 1" Text="{Binding StartDate, Converter={StaticResource StartDateToString}}" />
+                                    <TextBlock Name="FinishDateTextBlock" Foreground="Black" Grid.Row="1"
+                                               Margin="1, 1, 2, 1" Text="{Binding FinishDate, Converter={StaticResource FinishDateToString}}" />
+                                </Grid>
 
                             </Grid>
                         </Grid>
@@ -84,9 +105,22 @@
                             <Setter TargetName="PropertyWithButtons" Property="Visibility" Value="Visible"></Setter>
                         </MultiDataTrigger>
 
+                        <DataTrigger Binding="{Binding Path=StartDate, Converter={StaticResource isMinDateConverter}}" Value="True">
+                            <Setter TargetName="StartDateTextBlock" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=FinishDate, Converter={StaticResource isMinDateConverter}}" Value="True">
+                            <Setter TargetName="FinishDateTextBlock" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
                         <DataTrigger Binding="{Binding Path=IsImportant}" Value="True">
                             <Setter TargetName="MakeMissionImportant" Property="Foreground" Value="{StaticResource MissionIsImportantColor}" />
                             <Setter TargetName="RectImportant" Property="Fill" Value="{StaticResource MissionIsImportantColor}" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=FinishDate, Converter={StaticResource expirationConverter}}" Value="True">
+                            <Setter TargetName="StartDateTextBlock" Property="Foreground" Value="Red" />
+                            <Setter TargetName="FinishDateTextBlock" Property="Foreground" Value="Red" />
                         </DataTrigger>
 
                         <MultiDataTrigger>

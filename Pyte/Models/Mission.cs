@@ -13,10 +13,13 @@ namespace Pyte.Models {
 
         #region Constructors
         public Mission (string name) {
-            Name = name;
+            Name = (UnNamedCounter == -1)? name : $"Новая задача({UnNamedCounter})";
             ID = id_counter;
             IsSelected = false;
             id_counter++;
+            StartDate = DateTime.MinValue;
+            FinishDate = DateTime.MinValue;
+
             IsChecked = false;
             IsImportant = false;
             Children = new ObservableCollection<Mission>();
@@ -53,6 +56,11 @@ namespace Pyte.Models {
         }
         #endregion
 
+        #region UnNamedCounter
+        private long unNamedCounter;
+        public long UnNamedCounter { get; set; } = -1;
+        #endregion
+
         #region ID
         private long id;
         public long ID {
@@ -80,7 +88,7 @@ namespace Pyte.Models {
 
         #region FinishDate
         private DateTime finishDate;
-        private DateTime FinishDate {
+        public DateTime FinishDate {
             get {
                 return finishDate;
             }

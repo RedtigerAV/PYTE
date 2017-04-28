@@ -24,22 +24,47 @@ namespace Pyte.Pages {
             InitializeComponent();
         }
 
+        public void ClearFlyout() {
+            MissionNameTextBox.Text = "";
+            ToggleSwitchIsImportant.IsChecked = false;
+            StartDateTimePicker.SelectedDate = DateTime.MinValue;
+            FinishDateTimePicker.SelectedDate = DateTime.MinValue;
+        }
+
         private void SaveNewMissionButton_Click(object sender, RoutedEventArgs e) {
             Mission newMission;
+
+            newMission = new Mission(MissionNameTextBox.Text);
+            newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
+
+            DateTime start, finish;
+
+            if (StartDateTimePicker.SelectedDate == null) {
+                start = DateTime.MinValue;
+            } else {
+                start = (DateTime)StartDateTimePicker.SelectedDate;
+            }
+
+            if (FinishDateTimePicker.SelectedDate == null) {
+                finish = DateTime.MinValue;
+            } else {
+                finish = (DateTime)FinishDateTimePicker.SelectedDate;
+            }
+
+            newMission.StartDate = start;
+            newMission.FinishDate = finish;
+
             if (NeedToNotifySelectedItem.Instance.NotifyOpenFlyout) {
                 NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = false;
                 long id = (long)((Button)e.OriginalSource).Tag;
-                newMission = new Mission(MissionNameTextBox.Text);
-                newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
-                Methods.idToMission[newMission.ID] = newMission;
+
                 Methods.idToMission[id].Children.Add(newMission);
-                WorksWithFlyouts.CloseFlyout();
-                return;
             }
-            newMission = new Mission(MissionNameTextBox.Text);
-            newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
-            TreeViewModels.mis.Add(newMission);
+            else {
+                TreeViewModels.AllMissionCollection.Add(newMission);
+            }
             Methods.idToMission[newMission.ID] = newMission;
+            ClearFlyout();
             WorksWithFlyouts.CloseFlyout();
         }
     }

@@ -21,22 +21,32 @@ namespace Pyte.Models {
         public static bool OpenFlyout { get; set; } = false;
         #endregion
 
-        public static ObservableCollection<Mission> mis = new ObservableCollection<Mission> {
-            new Mission("LolTrol"), new Mission("2")
+        public static ObservableCollection<Mission> AllMissionCollection = new ObservableCollection<Mission> {
+            new Mission("Сходить в магазин"), new Mission("Прибраться в комнате")
         };
+
+        public static ObservableCollection<Mission> TodayMissionCollection = new ObservableCollection<Mission>();
+
+        public static ObservableCollection<Mission> TomorrowMissionCollection = new ObservableCollection<Mission>();
+
+        public static ObservableCollection<Mission> WeekCollection = new ObservableCollection<Mission>();
+
+        public static ObservableCollection<Mission> ImportantCollection = new ObservableCollection<Mission>();
+
+
         public static ObservableCollection<Mission> dis = new ObservableCollection<Mission> {
-                new Mission("1.1"), new Mission("1.2"), new Mission("1.3"),
+                new Mission("Купить кефир"), new Mission("Купить молоко"), new Mission("Купить творог"),
         };
 
         static TreeViewModels() {
             HelpSelectedItem = new NeedToNotifySelectedItem();
-            mis[0].Children = dis;
+            AllMissionCollection[0].Children = dis;
             ObservableCollection<Mission> kis = new ObservableCollection<Mission> {
-                new Mission("1.1.1"), new Mission("1.1.2"),
+                new Mission("Молоко топленое"), new Mission("Молоко обезжиренное"),
             };
-            mis[0].Children[1].Children = kis;
-            mis[0].IsSelected = true;
-            Methods.MakeConnectWithDict(mis);
+            AllMissionCollection[0].Children[1].Children = kis;
+            AllMissionCollection[0].IsSelected = true;
+            Methods.MakeConnectWithDict(AllMissionCollection);
         }
     }
 }

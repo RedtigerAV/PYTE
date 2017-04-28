@@ -48,3 +48,4 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\NewTaskFly
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\NewTaskFlyoutStyle.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\EditingTaskFlyoutContent.g.cs
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\EditingTaskFlyoutContent.baml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\GeneratedInternalTypeHelper.g.cs
