@@ -12,7 +12,7 @@ namespace Pyte.Converters {
     public class IsMaxDateConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             DateTime dt = (DateTime)(value);
-            if (dt == DateTime.MaxValue)
+            if (dt == DateTime.MaxValue.Date)
                 return true;
             return false;
         }

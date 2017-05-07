@@ -12,13 +12,14 @@ namespace Pyte.Models {
         private static long id_counter = 1;
 
         #region Constructors
-        public Mission (string name) {
-            Name = (UnNamedCounter == -1)? name : $"Новая задача({UnNamedCounter})";
+        public Mission (string name, long fathID) {
+            FatherID = fathID;
             ID = id_counter;
+            Name = name;
             IsSelected = false;
             id_counter++;
-            StartDate = DateTime.MinValue;
-            FinishDate = DateTime.MinValue;
+            StartDate = DateTime.MinValue.Date;
+            FinishDate = DateTime.MaxValue.Date;
 
             IsChecked = false;
             IsImportant = false;
@@ -71,6 +72,21 @@ namespace Pyte.Models {
                 id = value;
             }
         }
+        #endregion
+
+        #region fatherID
+
+        private long fatherID;
+        public long FatherID {
+            get {
+                return fatherID;
+            }
+            set {
+                fatherID = value;
+                OnPropertyChanged("FatherID");
+            }
+        }
+
         #endregion
 
         #region StartDate

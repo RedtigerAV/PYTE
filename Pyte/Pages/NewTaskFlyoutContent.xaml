@@ -47,20 +47,22 @@
             <TextBlock Grid.Row="2" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
                                    Text="Начало: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Controls:DateTimePicker Name="StartDateTimePicker" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" Grid.Column="1"
-                                     Margin="0, 1, 3, 1" Culture="RU" 
+            <DatePicker Name="StartDateTimePicker" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" 
+                                     Grid.Column="1"
+                                     Margin="0, 1, 3, 1" 
                                      FontFamily="Vardana"/>
 
             <TextBlock Grid.Row="3" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
                                    Text="Конец: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Controls:DateTimePicker Name="FinishDateTimePicker" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
-                                     Margin="0, 1, 3, 1" Culture="RU" 
+            <DatePicker Name="FinishDateTimePicker" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
+                                     Margin="0, 1, 3, 1"
                                      FontFamily="Vardana"/>
 
 
             <Button Name="SaveNewMissionButton" Tag="{Binding NotifyParentID, Source={x:Static models:NeedToNotifySelectedItem.Instance}}" Height="40" Width="100"
-                    Grid.Row="7" Margin="15" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Grid.Row="7" Margin="20" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Controls:ButtonHelper.CornerRadius="5"
                     Content="Сохранить" Click="SaveNewMissionButton_Click"
                     Background="{StaticResource MainThemeColor}"/>
 

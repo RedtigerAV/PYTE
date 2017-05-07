@@ -8,6 +8,7 @@
       xmlns:styles="clr-namespace:Pyte.Styles"
       xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       mc:Ignorable="d" 
+      xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
       d:DesignHeight="300" d:DesignWidth="300"
       Title="AllTasks">
 
@@ -41,5 +42,6 @@
                 <Frame Source="EditingTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
+
     </Grid>
 </Page>

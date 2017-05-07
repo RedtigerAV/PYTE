@@ -14,7 +14,7 @@ namespace Pyte.Models {
         #region GetSelectedItem
         public static NeedToNotifySelectedItem HelpSelectedItem;
 
-        public static Mission SelectedItemFromTreeView { get; set; } = new Mission("LolKekCheb");
+        public static Mission SelectedItemFromTreeView { get; set; }
 
         public static long ParentID { get; set; }
 
@@ -22,7 +22,7 @@ namespace Pyte.Models {
         #endregion
 
         public static ObservableCollection<Mission> AllMissionCollection = new ObservableCollection<Mission> {
-            new Mission("Сходить в магазин"), new Mission("Прибраться в комнате")
+            new Mission("Сходить в магазин", -1), new Mission("Прибраться в комнате", -1)
         };
 
         public static ObservableCollection<Mission> TodayMissionCollection = new ObservableCollection<Mission>();
@@ -34,18 +34,20 @@ namespace Pyte.Models {
         public static ObservableCollection<Mission> ImportantCollection = new ObservableCollection<Mission>();
 
 
-        public static ObservableCollection<Mission> dis = new ObservableCollection<Mission> {
-                new Mission("Купить кефир"), new Mission("Купить молоко"), new Mission("Купить творог"),
-        };
+        /*public static ObservableCollection<Mission> dis = new ObservableCollection<Mission> {
+                new Mission("Купить кефир", AllMissionCollection[0].ID),
+            new Mission("Купить молоко",  AllMissionCollection[0].ID), new Mission("Купить творог",  AllMissionCollection[0].ID),
+        }; */
 
         static TreeViewModels() {
             HelpSelectedItem = new NeedToNotifySelectedItem();
-            AllMissionCollection[0].Children = dis;
+            /*AllMissionCollection[0].Children = dis;
             ObservableCollection<Mission> kis = new ObservableCollection<Mission> {
-                new Mission("Молоко топленое"), new Mission("Молоко обезжиренное"),
+                new Mission("Молоко топленое", AllMissionCollection[0].Children[1].ID),
+                new Mission("Молоко обезжиренное", AllMissionCollection[0].Children[1].ID),
             };
             AllMissionCollection[0].Children[1].Children = kis;
-            AllMissionCollection[0].IsSelected = true;
+            AllMissionCollection[0].IsSelected = true; */
             Methods.MakeConnectWithDict(AllMissionCollection);
         }
     }

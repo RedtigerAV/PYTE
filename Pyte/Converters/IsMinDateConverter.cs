@@ -12,7 +12,7 @@ namespace Pyte.Converters {
     public class IsMinDateConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             DateTime dt = (DateTime)(value);
-            if (dt == DateTime.MinValue)
+            if (dt == DateTime.MinValue.Date)
                 return true;
             return false;
         }

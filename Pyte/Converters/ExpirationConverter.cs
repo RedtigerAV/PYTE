@@ -12,9 +12,9 @@ namespace Pyte.Converters {
     public class ExpirationConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             DateTime dt = (DateTime)(value);
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = DateTime.Today;
             int result = dtNow.CompareTo(dt);
-            if (result >= 0) {
+            if (result > 0) {
                 return true;
             }
             return false;

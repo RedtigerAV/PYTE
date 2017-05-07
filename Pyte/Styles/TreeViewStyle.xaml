@@ -9,6 +9,7 @@
 
     <converters:ExpirationConverter x:Key="expirationConverter" />
     <converters:IsMinDateConverter x:Key="isMinDateConverter" />
+    <converters:IsMaxDateConverter x:Key="isMaxDateConverter" />
 
     <Style TargetType="TreeView">
         <Setter Property="ItemsSource" Value="{Binding}" />
@@ -109,7 +110,7 @@
                             <Setter TargetName="StartDateTextBlock" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding Path=FinishDate, Converter={StaticResource isMinDateConverter}}" Value="True">
+                        <DataTrigger Binding="{Binding Path=FinishDate, Converter={StaticResource isMaxDateConverter}}" Value="True">
                             <Setter TargetName="FinishDateTextBlock" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
 

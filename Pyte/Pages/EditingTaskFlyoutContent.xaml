@@ -31,35 +31,42 @@
             <TextBlock Grid.Row="0" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana"
                                    Text="Название: " Margin="4" FontSize="15" VerticalAlignment="Center"/>
-            <TextBox Name="MissionNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" 
+            <TextBox Name="MissionNameTextBox" Text="{Binding Name, Mode=OneWay}"
+                                 Grid.Column="1" Grid.Row="0" 
                                  Controls:TextBoxHelper.ClearTextButton="True"
-                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1" VerticalAlignment="Center"/>
+                                 FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1"
+                                 VerticalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
                                    Text="Важное: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Controls:ToggleSwitch Name="ToggleSwitchIsImportant" Grid.Row="1" Grid.Column="1"
-                                   IsChecked="{Binding IsImportant, UpdateSourceTrigger=PropertyChanged}" SwitchForeground="{StaticResource MainThemeColor}" 
+                                   IsChecked="{Binding IsImportant, Mode=OneWay}" 
+                                   SwitchForeground="{StaticResource MainThemeColor}" 
                                    OnLabel="" OffLabel="" HorizontalAlignment="Left" VerticalAlignment="Center"
                                    Margin="0, 1, 3, 1"/>
 
             <TextBlock Grid.Row="2" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
                                    Text="Начало: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Controls:DateTimePicker Name="StartDateTimePicker" SelectedDate="{Binding StartDate, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" Grid.Column="1"
-                                     Margin="0, 1, 3, 1" Culture="RU" 
+            <DatePicker Name="StartDateTimePicker" SelectedDate="{Binding StartDate, Mode=OneWay}" 
+                        Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" Grid.Column="1"
+                                     Margin="0, 1, 3, 1"
                                      FontFamily="Vardana" IsTodayHighlighted="True"/>
 
             <TextBlock Grid.Row="3" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
                                    Text="Конец: " Margin="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Controls:DateTimePicker Name="FinishDateTimePicker" SelectedDate="{Binding FinishDate, UpdateSourceTrigger=PropertyChanged}" Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
-                                     Margin="0, 1, 3, 1" Culture="RU" 
-                                     FontFamily="Vardana"/>
+            <DatePicker Name="FinishDateTimePicker" SelectedDate="{Binding FinishDate, Mode=OneWay}"
+                        Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
+                                     Margin="0, 1, 3, 1"
+                                     FontFamily="Vardana">
+            </DatePicker>
 
-            <Button Name="SaveNewMissionButton" Height="40" Width="100" Grid.Row="7" Grid.Column="1" Margin="15"
+            <Button Name="EditMissionButton" Controls:ButtonHelper.CornerRadius="5" Height="40" Width="100" Grid.Row="7" 
+                    Grid.Column="1" Margin="20"
                     HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Сохранить"
-                    Background="{StaticResource MainThemeColor}"/>
+                    Background="{StaticResource MainThemeColor}" Click="EditMissionButton_Click"/>
 
         </Grid>
     </Grid>

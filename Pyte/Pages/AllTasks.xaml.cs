@@ -42,17 +42,24 @@ namespace Pyte.Pages {
             if (EditingSelectedMission.IsOpen) {
                 EditingSelectedMission.IsOpen = false;
             }
+            WorksWithFlyouts.ClearBlackoutsDate();
             AddNewMission.IsOpen = true;
+
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e) {
+            WorksWithFlyouts.ClearBlackoutsDate();
+
             if (AddNewMission.IsOpen) {
                 AddNewMission.IsOpen = false;
             }
 
             TreeView tr = (TreeView)sender;
             Mission SelectedMission = (Mission)tr.SelectedItem;
+            //MessageBox.Show($"SelectedMission: {SelectedMission.Name} and {SelectedMission.ID}\n StartDate: {SelectedMission.StartDate.ToString()}\n FinishDate: {SelectedMission.FinishDate.ToString()}\n FatherId: {SelectedMission.FatherID}");
+
             NeedToNotifySelectedItem.Instance.NeedToNotify = SelectedMission;
+            NeedToNotifySelectedItem.Instance.UpdateBlackoutsDate();
             EditingSelectedMission.IsOpen = true;
 
         }

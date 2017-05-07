@@ -9,6 +9,7 @@ using System.ComponentModel;
 namespace Pyte.Models {
 
     public delegate void OpenNewTaskFlyoutEventHadler();
+    public delegate void UpdateDatePickerEventHadler();
 
     public class NeedToNotifySelectedItem : INotifyPropertyChanged {
 
@@ -49,12 +50,18 @@ namespace Pyte.Models {
 
         public event OpenNewTaskFlyoutEventHadler OpenNewTaskFlyout;
 
+        public event UpdateDatePickerEventHadler UpdateDatePicker;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public void UpdateBlackoutsDate() {
+            UpdateDatePicker();
         }
     }
 }
