@@ -34,7 +34,7 @@ namespace Pyte {
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             int numb = MainTabControl.SelectedIndex;
             WorkWithTabControl.SelectedTabItem = numb;
-            if (numb == 0 || numb == 1) {
+            if (numb >= 0 && numb <= 4) {
                 WorkWithTabControl.ChangeTabItemMethod();
             }
         }

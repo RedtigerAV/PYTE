@@ -14,6 +14,8 @@ namespace Pyte.Models {
 
         public Predicate<Mission> Filter { get; set; }
 
+        public Predicate<Mission> TabControlFilter { get; set; } = null;
+
         public ICollectionView ChildrenView {
             get { return _childrenSource.View; }
         }
@@ -36,7 +38,8 @@ namespace Pyte.Models {
                     return;
                 }
 
-                item.IsAccepted = Filter == null || Filter(item) || Appropriate(item);
+                item.IsAccepted =  Appropriate(item) || ((Filter == null || Filter(item)) && 
+                                    (TabControlFilter == null || TabControlFilter(item)));
 
                 e.Accepted = item.IsAccepted;
         }

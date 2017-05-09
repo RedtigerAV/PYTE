@@ -43,13 +43,15 @@ namespace Pyte.Pages {
             WorksWithFlyouts.CloseAllTaskFlyouts += WorksWithFlyouts_CloseAllTaskFlyouts;
         }
 
+        #region SearchFilter
+
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             string _searchText = ((TextBox)sender).Text;
             ApplyFilterText(_searchText);
         }
 
         private void ApplyFilterText(string filterText) {
-            Predicate<Mission> Filter = item => item.Name.Contains(filterText);
+            Predicate<Mission> Filter = item => item.Name.ToUpper().Contains(filterText.ToUpper());
             ApplyFilterText(TreeViewModels.Root, Filter);
         }
 
@@ -57,13 +59,19 @@ namespace Pyte.Pages {
             if (item == null)
                 return;
 
-            foreach (Mission child in item.Children)
+            foreach (Mission child in item.ChildrenView)
                 ApplyFilterText(child, filter);
 
             item.Filter = filter;
 
+            item.IsAccepted = true;
+
             item.ChildrenView.Refresh();
         }
+
+        #endregion
+
+        #region OtherFilters
 
         private void WorksWithFlyouts_CloseAllTaskFlyouts() {
             AddNewMission.IsOpen = false;
@@ -71,15 +79,48 @@ namespace Pyte.Pages {
         }
 
         private void WorkWithTabControl_ChangeTabItemEvent() {
-            /*int numb = WorkWithTabControl.SelectedTabItem;
+            int numb = WorkWithTabControl.SelectedTabItem;
             WorksWithFlyouts.CloseAllFlyouts();
             WorksWithFlyouts.ClearBlackoutsDate();
-            if (numb == 0) {
-                MissionsList.DataContext = TreeViewModels.AllMissionCollection;
-            } else if (numb == 1) {
-                MissionsList.DataContext = TreeViewModels.TodayMissionCollection;
-            }*/
+            Predicate<Mission> Filter;
+            if (numb == 0)
+                Filter = null;
+            else if (numb == 1) {
+                Filter = (item) => {
+                    return (DateTime.Compare(item.StartDate, DateTime.Today) <= 0 &&
+                    DateTime.Compare(DateTime.Today, item.FinishDate) <= 0);
+                };
+            } else if (numb == 2) {
+                Filter = (item) => {
+                    return (DateTime.Compare(item.StartDate, DateTime.Today.AddDays(1)) <= 0 &&
+                    DateTime.Compare(DateTime.Today.AddDays(1), item.FinishDate) <= 0);
+                };
+            }
+
+            //week filter
+
+            else { 
+                Filter = item => item.IsImportant;
+            }
+
+            ApplyOtherFilters(TreeViewModels.Root, Filter);
         }
+
+        private void ApplyOtherFilters(Mission item, Predicate<Mission> filter) {
+            if (item == null) {
+                return;
+            }
+
+            foreach (Mission child in item.ChildrenView) {
+                ApplyOtherFilters(child, filter);
+            }
+
+            item.TabControlFilter = filter;
+
+            item.ChildrenView.Refresh();
+        }
+
+        #endregion
 
         private void WorksWithFlyouts_CloseNewTaskFlyout() {
             AddNewMission.IsOpen = false;

@@ -29,7 +29,7 @@
                            Text="Все задачи" />
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 0"
-                          TextChanged="SearchTextBox_TextChanged" />
+                         TextChanged="SearchTextBox_TextChanged" />
                 <TreeView Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
                 <Button Grid.Row="2" Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
