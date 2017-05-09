@@ -51,14 +51,17 @@
         <Controls:MetroAnimatedSingleRowTabControl Background="Transparent"
                                                    TabStripPlacement="Left" 
                                                    Controls:TabControlHelper.Underlined="TabPanel" 
-                                                   Controls:TabControlHelper.UnderlineSelectedBrush="{StaticResource MainThemeColor}">
-            <Controls:MetroTabItem Header="Все задачи">
+                                                   Controls:TabControlHelper.UnderlineSelectedBrush="{StaticResource MainThemeColor}"
+                                                   Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
+            <Controls:MetroTabItem Header="Все задачи" IsSelected="True">
                 <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
             </Controls:MetroTabItem>
             <TabItem Header="Сегодня">
-                <TextBox Height="40" Width="160" Controls:TextBoxHelper.Watermark="Find me"></TextBox>
+                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
             </TabItem>
-            <TabItem Header="Завтра"></TabItem>
+            <TabItem Header="Завтра">
+                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
+            </TabItem>
             <TabItem Header="Неделя"></TabItem>
             <TabItem Header="Важное"></TabItem>
             <TabItem Header="Заметки"></TabItem>

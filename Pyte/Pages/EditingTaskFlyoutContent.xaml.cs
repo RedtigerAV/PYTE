@@ -37,6 +37,10 @@ namespace Pyte.Pages {
             StartDateTimePicker.DisplayDate = DateTime.Today;
             FinishDateTimePicker.DisplayDate = DateTime.Today;
             Mission selectMission = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            if (selectMission == null) {
+                WorksWithFlyouts.CloseAllFlyouts();
+                return;
+            }
             #region Ограничение задачи относительно подзадач
             DateTime minChildDate = DateTime.MaxValue.Date, maxChildDate = DateTime.MinValue.Date;
             DateTime minMiddleDate = DateTime.MaxValue.Date, maxMiddleDate = DateTime.MinValue.Date;

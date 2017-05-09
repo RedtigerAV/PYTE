@@ -90,10 +90,11 @@ namespace Pyte.Pages {
                 NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = false;
                 long id = (long)((Button)e.OriginalSource).Tag;
                 newMission.FatherID = id;
-                Methods.idToMission[id].Children.Add(newMission);
+                Methods.idToMission[id].Add(newMission);
             }
             else {
-                TreeViewModels.AllMissionCollection.Add(newMission);
+                TreeViewModels.Root.Add(newMission);
+                
             }
             Methods.idToMission[newMission.ID] = newMission;
             WorksWithFlyouts.CloseFlyout();

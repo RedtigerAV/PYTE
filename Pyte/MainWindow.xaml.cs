@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Pyte.Models;
 
 namespace Pyte {
     /// <summary>
@@ -28,6 +29,14 @@ namespace Pyte {
 
         private void Open_Calendar(object sender, RoutedEventArgs e) {
             CalendarFlyouts.IsOpen = true;
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            int numb = MainTabControl.SelectedIndex;
+            WorkWithTabControl.SelectedTabItem = numb;
+            if (numb == 0 || numb == 1) {
+                WorkWithTabControl.ChangeTabItemMethod();
+            }
         }
     }
 }

@@ -77,11 +77,12 @@
     <Compile Include="Converters\IsMaxDateConverter.cs" />
     <Compile Include="Converters\IsMinDateConverter.cs" />
     <Compile Include="Converters\StartDateToStringConverter.cs" />
-    <Compile Include="Converters\TaskNameConverter.cs" />
+    <Compile Include="Converters\TreeViewFilterConverter.cs" />
     <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Models\WorksWithFlyouts.cs" />
+    <Compile Include="Models\WorkWithTabControl.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
     </Compile>

@@ -13,21 +13,19 @@
 
     <Style TargetType="TreeView">
         <Setter Property="ItemsSource" Value="{Binding}" />
+        <Setter Property="TreeViewItem.IsExpanded" Value="True" />
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
         <Setter Property="ItemTemplate">
             <Setter.Value>
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                <HierarchicalDataTemplate ItemsSource="{Binding ChildrenView}">
                     <Border Name="MissionBlock" Margin="2" HorizontalAlignment="Stretch"
                                 BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" Height="40" 
                             SnapsToDevicePixels="True">
                         <Grid>
-                            <Grid.Resources>
-                                <converters:TaskNameConverter x:Key="ConvertName" />
-                            </Grid.Resources>
                             <Border Name="mask" Background="White" CornerRadius="5"/>
 
-                            <Grid Background="#F2F8EA" Name="MissionGrid">
+                            <Grid Background="#F2F8EA" Name="MissionGrid" HorizontalAlignment="Stretch">
 
                                 <Grid.OpacityMask>
                                     <VisualBrush Visual="{Binding ElementName=mask}"/>
@@ -48,7 +46,7 @@
                                 <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Vardana" 
                                            Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center" Foreground="Black"></TextBlock>
                                 <Grid Name="PropertyWithButtons" Grid.Column="3" 
-                                            VerticalAlignment="Center" Visibility="Collapsed">
+                                            VerticalAlignment="Center" Visibility="Hidden">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -77,6 +75,7 @@
                                             VerticalContentAlignment="Center" BorderThickness="0"
                                             Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                             ToolTip="Важное">7</Button>
+                                    <Grid Grid.Column="3" Background="Transparent" HorizontalAlignment="Stretch"/>
 
                                 </Grid>
                                 <Grid Grid.Column="4" HorizontalAlignment="Right" Width="auto" Height="auto">

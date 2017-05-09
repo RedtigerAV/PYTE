@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Pyte.Models;
 using System.Collections.ObjectModel;
 using Pyte.Pages;
+using System.ComponentModel;
 
 namespace Pyte.Pages {
     /// <summary>
@@ -22,11 +23,62 @@ namespace Pyte.Pages {
     /// </summary>
     public partial class AllTasks : Page {
 
+        #region INotifyProperty
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        #endregion
+
+
         public AllTasks() {
             InitializeComponent();
-            MissionsList.DataContext = TreeViewModels.AllMissionCollection;
+            MissionsList.DataContext = TreeViewModels.Root.ChildrenView;
             WorksWithFlyouts.CloseNewTaskFlyout += WorksWithFlyouts_CloseNewTaskFlyout;
             NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += Instance_OpenNewTaskFlyout;
+            WorkWithTabControl.ChangeTabItemEvent += WorkWithTabControl_ChangeTabItemEvent;
+            WorksWithFlyouts.CloseAllTaskFlyouts += WorksWithFlyouts_CloseAllTaskFlyouts;
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            string _searchText = ((TextBox)sender).Text;
+            ApplyFilterText(_searchText);
+        }
+
+        private void ApplyFilterText(string filterText) {
+            Predicate<Mission> Filter = item => item.Name.Contains(filterText);
+            ApplyFilterText(TreeViewModels.Root, Filter);
+        }
+
+        private static void ApplyFilterText(Mission item, Predicate<Mission> filter) {
+            if (item == null)
+                return;
+
+            foreach (Mission child in item.Children)
+                ApplyFilterText(child, filter);
+
+            item.Filter = filter;
+
+            item.ChildrenView.Refresh();
+        }
+
+        private void WorksWithFlyouts_CloseAllTaskFlyouts() {
+            AddNewMission.IsOpen = false;
+            EditingSelectedMission.IsOpen = false;
+        }
+
+        private void WorkWithTabControl_ChangeTabItemEvent() {
+            /*int numb = WorkWithTabControl.SelectedTabItem;
+            WorksWithFlyouts.CloseAllFlyouts();
+            WorksWithFlyouts.ClearBlackoutsDate();
+            if (numb == 0) {
+                MissionsList.DataContext = TreeViewModels.AllMissionCollection;
+            } else if (numb == 1) {
+                MissionsList.DataContext = TreeViewModels.TodayMissionCollection;
+            }*/
         }
 
         private void WorksWithFlyouts_CloseNewTaskFlyout() {
@@ -59,8 +111,8 @@ namespace Pyte.Pages {
             //MessageBox.Show($"SelectedMission: {SelectedMission.Name} and {SelectedMission.ID}\n StartDate: {SelectedMission.StartDate.ToString()}\n FinishDate: {SelectedMission.FinishDate.ToString()}\n FatherId: {SelectedMission.FatherID}");
 
             NeedToNotifySelectedItem.Instance.NeedToNotify = SelectedMission;
-            NeedToNotifySelectedItem.Instance.UpdateBlackoutsDate();
             EditingSelectedMission.IsOpen = true;
+            NeedToNotifySelectedItem.Instance.UpdateBlackoutsDate();
 
         }
     }

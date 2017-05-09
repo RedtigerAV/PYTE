@@ -18,9 +18,20 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
-            <Grid Name="MissionsList">
-                <TreeView Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
-                <Button Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+            <Grid Name="MissionsList" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextAlignment="Center" 
+                           FontSize="15" Foreground="{StaticResource MainThemeColor}" Background="White" 
+                           Text="Все задачи" />
+                <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
+                         BorderThickness="1, 1, 1, 0"
+                          TextChanged="SearchTextBox_TextChanged" />
+                <TreeView Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
+                <Button Grid.Row="2" Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
                         FontFamily="/Resources/#Entypo"
                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

@@ -5,15 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Data;
 
 namespace Pyte.Models {
     public class Mission: INotifyPropertyChanged {
 
-        private static long id_counter = 1;
+        private static long id_counter = 0;
+
+        public Predicate<Mission> Filter { get; set; }
+
+        public ICollectionView ChildrenView {
+            get { return _childrenSource.View; }
+        }
+
+        private readonly CollectionViewSource _childrenSource = new CollectionViewSource();
+
+        public bool Appropriate(Mission item) {
+            bool flag = false;
+            foreach (Mission it in item.ChildrenView) {
+                if (it.IsAccepted)
+                    flag = true;
+            }
+            return flag;
+        }
+
+        private void _childrenSource_Filter(object sender, FilterEventArgs e) {
+                Mission item = (Mission)e.Item;
+                if (item == null) {
+                    e.Accepted = false;
+                    return;
+                }
+
+                item.IsAccepted = Filter == null || Filter(item) || Appropriate(item);
+
+                e.Accepted = item.IsAccepted;
+        }
 
         #region Constructors
-        public Mission (string name, long fathID) {
+
+        public Mission (string name, long fathID){
+            Children = new ObservableCollection<Mission>();
+            _childrenSource.Source = Children;
+            _childrenSource.Filter += _childrenSource_Filter;
             FatherID = fathID;
+            IsAccepted = true;
             ID = id_counter;
             Name = name;
             IsSelected = false;
@@ -23,8 +58,7 @@ namespace Pyte.Models {
 
             IsChecked = false;
             IsImportant = false;
-            Children = new ObservableCollection<Mission>();
-            Marks = new ObservableCollection<string>();
+            Marks = new ObservableCollection<string> { "Lol", "What", "Okey"};
 
         }
         #endregion
@@ -57,9 +91,12 @@ namespace Pyte.Models {
         }
         #endregion
 
-        #region UnNamedCounter
-        private long unNamedCounter;
-        public long UnNamedCounter { get; set; } = -1;
+        #region IsAccepted
+        private bool isAccepted;
+        public bool IsAccepted {
+            get { return isAccepted; }
+            set { isAccepted = value; }
+        }
         #endregion
 
         #region ID
@@ -179,6 +216,12 @@ namespace Pyte.Models {
         #endregion
 
         #endregion
+
+        public void Add(Mission item) {
+            if (item != null)
+                Children.Add(item);
+            ChildrenView?.Refresh();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

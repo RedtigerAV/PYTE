@@ -21,34 +21,13 @@ namespace Pyte.Models {
         public static bool OpenFlyout { get; set; } = false;
         #endregion
 
-        public static ObservableCollection<Mission> AllMissionCollection = new ObservableCollection<Mission> {
-            new Mission("Сходить в магазин", -1), new Mission("Прибраться в комнате", -1)
-        };
-
-        public static ObservableCollection<Mission> TodayMissionCollection = new ObservableCollection<Mission>();
-
-        public static ObservableCollection<Mission> TomorrowMissionCollection = new ObservableCollection<Mission>();
-
-        public static ObservableCollection<Mission> WeekCollection = new ObservableCollection<Mission>();
-
-        public static ObservableCollection<Mission> ImportantCollection = new ObservableCollection<Mission>();
-
-
-        /*public static ObservableCollection<Mission> dis = new ObservableCollection<Mission> {
-                new Mission("Купить кефир", AllMissionCollection[0].ID),
-            new Mission("Купить молоко",  AllMissionCollection[0].ID), new Mission("Купить творог",  AllMissionCollection[0].ID),
-        }; */
+        public static Mission Root = new Mission("Root", -1);
 
         static TreeViewModels() {
-            HelpSelectedItem = new NeedToNotifySelectedItem();
-            /*AllMissionCollection[0].Children = dis;
-            ObservableCollection<Mission> kis = new ObservableCollection<Mission> {
-                new Mission("Молоко топленое", AllMissionCollection[0].Children[1].ID),
-                new Mission("Молоко обезжиренное", AllMissionCollection[0].Children[1].ID),
-            };
-            AllMissionCollection[0].Children[1].Children = kis;
-            AllMissionCollection[0].IsSelected = true; */
-            Methods.MakeConnectWithDict(AllMissionCollection);
+            Root.Add(new Mission("Сходить в магазин", -1));
+            Root.Add(new Mission("Прибраться в комнате", -1));
+            Root.Children[0].Add(new Mission("Lolo", Root.Children[0].ID));
+            Methods.MakeConnectWithDict(Root.Children);
         }
     }
 }
