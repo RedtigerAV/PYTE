@@ -53,19 +53,18 @@
                                                    Controls:TabControlHelper.Underlined="TabPanel" 
                                                    Controls:TabControlHelper.UnderlineSelectedBrush="{StaticResource MainThemeColor}"
                                                    Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
-            <Controls:MetroTabItem Header="Все задачи" IsSelected="True">
-                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
-            </Controls:MetroTabItem>
-            <TabItem Header="Сегодня">
-                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
-            </TabItem>
-            <TabItem Header="Завтра">
-                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
-            </TabItem>
-            <TabItem Header="Неделя"></TabItem>
-            <TabItem Header="Важное">
-                <Frame Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
-            </TabItem>
+            <Controls:MetroAnimatedSingleRowTabControl.Resources>
+                <Frame x:Key="AllTasksResources" Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
+            </Controls:MetroAnimatedSingleRowTabControl.Resources>
+            <TabItem Header="Все задачи" IsSelected="True" Content="{StaticResource AllTasksResources}"></TabItem>
+            <TabItem Header="Сегодня" Content="{StaticResource AllTasksResources}" />
+
+            <TabItem Header="Завтра" Content="{StaticResource AllTasksResources}"/>
+
+            <TabItem Header="Неделя" Content="{StaticResource AllTasksResources}" />
+
+            <TabItem Header="Важное"  Content="{StaticResource AllTasksResources}" />
+
             <TabItem Header="Заметки"></TabItem>
             <TabItem Header="Документы"></TabItem>
             <TabItem Header="Расписание"></TabItem>

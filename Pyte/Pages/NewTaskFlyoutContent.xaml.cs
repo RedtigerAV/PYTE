@@ -99,6 +99,7 @@ namespace Pyte.Pages {
             Methods.idToMission[newMission.ID] = newMission;
             WorksWithFlyouts.CloseFlyout();
             ClearFlyout();
+            WorkWithFilters.Filters.OnOtherFilters();
         }
     }
 }

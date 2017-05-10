@@ -32,10 +32,14 @@ namespace Pyte {
         }
 
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            int numb = MainTabControl.SelectedIndex;
-            WorkWithTabControl.SelectedTabItem = numb;
-            if (numb >= 0 && numb <= 4) {
-                WorkWithTabControl.ChangeTabItemMethod();
+            var fatherOfEvent = e.OriginalSource as TabControl;
+            if (fatherOfEvent != null) {
+                int numb = MainTabControl.SelectedIndex;
+                WorkWithTabControl.SelectedTabItem = numb;
+                //MessageBox.Show($"Blabla: {e.OriginalSource.ToString()}");
+                if (numb >= 0 && numb <= 4) {
+                    WorkWithTabControl.ChangeTabItemMethod();
+                }
             }
         }
     }

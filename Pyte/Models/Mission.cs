@@ -38,7 +38,7 @@ namespace Pyte.Models {
                     return;
                 }
 
-                item.IsAccepted =  Appropriate(item) || ((Filter == null || Filter(item)) && 
+                item.IsAccepted =  ((Appropriate(item) || Filter == null || Filter(item)) && 
                                     (TabControlFilter == null || TabControlFilter(item)));
 
                 e.Accepted = item.IsAccepted;
@@ -48,8 +48,6 @@ namespace Pyte.Models {
 
         public Mission (string name, long fathID){
             Children = new ObservableCollection<Mission>();
-            _childrenSource.Source = Children;
-            _childrenSource.Filter += _childrenSource_Filter;
             FatherID = fathID;
             IsAccepted = true;
             ID = id_counter;
@@ -62,6 +60,8 @@ namespace Pyte.Models {
             IsChecked = false;
             IsImportant = false;
             Marks = new ObservableCollection<string> { "Lol", "What", "Okey"};
+            _childrenSource.Source = Children;
+            _childrenSource.Filter += _childrenSource_Filter;
 
         }
         #endregion

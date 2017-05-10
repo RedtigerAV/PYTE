@@ -9,8 +9,11 @@ using System.ComponentModel;
 namespace Pyte.Models {
     public delegate void ChangeTabItem();
 
-    public static partial class WorkWithTabControl {
+    public static class WorkWithTabControl/*: INotifyPropertyChanged*/ {
+        //public static WorkWithTabControl InstanceTabControl = new WorkWithTabControl();
+
         public static event ChangeTabItem ChangeTabItemEvent;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public static int SelectedTabItem { get; set; } = 0;
 

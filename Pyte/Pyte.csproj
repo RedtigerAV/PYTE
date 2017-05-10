@@ -82,6 +82,7 @@
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Models\WorksWithFlyouts.cs" />
+    <Compile Include="Models\WorkWithFilters.cs" />
     <Compile Include="Models\WorkWithTabControl.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
@@ -123,10 +124,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Importantly.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\NewTaskFlyoutContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,18 +141,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TasksTag.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Today.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Tomorrow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Week.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,9 +169,6 @@
     <Compile Include="Pages\Documents.xaml.cs">
       <DependentUpon>Documents.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Importantly.xaml.cs">
-      <DependentUpon>Importantly.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Notes.xaml.cs">
       <DependentUpon>Notes.xaml</DependentUpon>
     </Compile>
@@ -198,15 +180,6 @@
     </Compile>
     <Compile Include="Pages\TasksTag.xaml.cs">
       <DependentUpon>TasksTag.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Today.xaml.cs">
-      <DependentUpon>Today.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Tomorrow.xaml.cs">
-      <DependentUpon>Tomorrow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Week.xaml.cs">
-      <DependentUpon>Week.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
