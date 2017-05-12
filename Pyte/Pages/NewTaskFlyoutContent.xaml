@@ -35,7 +35,7 @@
                                  Controls:TextBoxHelper.ClearTextButton="True"
                                  FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1"
                                  VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"/>
+                                 VerticalContentAlignment="Center" TextWrapping="Wrap"/>
 
             <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
@@ -61,16 +61,21 @@
 
             <GroupBox Grid.ColumnSpan="2" Grid.Row="4" Header="Заметки" Foreground="{StaticResource ButtonsIsNotMouseOver}" 
                       FontSize="17" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                      Margin="3">
+                      Margin="3" Width="{Binding MarkWidth, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, Source={x:Static models:NeedToNotifySelectedItem.Instance}}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                         Controls:TextBoxHelper.Watermark="Введиите заметку" Controls:TextBoxHelper.ButtonFontFamily="Wingdings"
-                         Controls:TextBoxHelper.ButtonContent="Q" Style="{DynamicResource MetroButtonTextBox}"/>
-                    <ListBox Grid.Row="1" FontSize="12"/>
+                    <TextBox Name="NewMarkTextBox" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                         Controls:TextBoxHelper.Watermark="Введите заметку" Controls:TextBoxHelper.ButtonFontFamily="Wingdings"
+                         Controls:TextBoxHelper.ButtonContent="&#x0021;" Style="{DynamicResource MetroButtonTextBox}"
+                         AcceptsReturn="True" TextWrapping="Wrap"  Controls:TextBoxHelper.ButtonCommand="{Binding AddMarkCommand_InNewTaskFlyout}"
+                             Controls:TextBoxHelper.ButtonCommandParameter="{Binding ElementName=NewMarkTextBox, Path=Text}"/>
+                    <ListBox Grid.Row="1" FontSize="12" ItemsSource="{Binding NewTaskMarks, UpdateSourceTrigger=PropertyChanged, Source={x:Static models:NeedToNotifySelectedItem.Instance}}" 
+                             Style="{StaticResource ListBoxMarks}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             SelectionChanged="MarksListBoxNewTask_SelectionChanged"/>
                 </Grid>
             </GroupBox>
 

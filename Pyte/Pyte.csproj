@@ -76,12 +76,18 @@
     <Compile Include="Converters\FinishDateToStringConverter.cs" />
     <Compile Include="Converters\IsMaxDateConverter.cs" />
     <Compile Include="Converters\IsMinDateConverter.cs" />
+    <Compile Include="Converters\MinMaxDateShowConverter.cs" />
     <Compile Include="Converters\StartDateToStringConverter.cs" />
+    <Compile Include="Converters\WidthMarkConverter.cs" />
     <Compile Include="Converters\TreeViewFilterConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="IChangedCommand.cs" />
     <Compile Include="Models\Methods.cs" />
+    <Compile Include="Models\MiniMark.cs" />
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Models\WorksWithFlyouts.cs" />
+    <Compile Include="Models\WorkWithCalendar.cs" />
     <Compile Include="Models\WorkWithFilters.cs" />
     <Compile Include="Models\WorkWithTabControl.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
@@ -89,6 +95,9 @@
     </Compile>
     <Compile Include="Pages\NewTaskFlyoutContent.xaml.cs">
       <DependentUpon>NewTaskFlyoutContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\ListBoxForMarksStyle.xaml.cs">
+      <DependentUpon>ListBoxForMarksStyle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Styles\NewTaskFlyoutStyle.xaml.cs">
       <DependentUpon>NewTaskFlyoutStyle.xaml</DependentUpon>
@@ -151,6 +160,10 @@
     <Page Include="Resources\IconsNonShared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListBoxForMarksStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\NewTaskFlyoutStyle.xaml">
       <SubType>Designer</SubType>

@@ -26,6 +26,35 @@ namespace Pyte.Models {
             }
         }
 
+        private MiniMark selectedMark;
+        public MiniMark SelectedMark {
+            get { return selectedMark; }
+            set {
+                if (value != null) {
+                    selectedMark = value;
+                    OnPropertyChanged(nameof(SelectedMark));
+                }
+            }
+        }
+
+        private ObservableCollection<MiniMark> newTaskMarks = new ObservableCollection<MiniMark>();
+        public ObservableCollection<MiniMark> NewTaskMarks {
+            get { return newTaskMarks; }
+            set {
+                newTaskMarks = value;
+            }
+        }
+
+        private bool newTaskFlyoutIsOpen = false;
+        public bool NewTaskFlyoutIsOpen {
+            get { return newTaskFlyoutIsOpen; }
+            set {
+                newTaskFlyoutIsOpen = value;
+                //Instance.NewTaskMarks.Clear();
+                OnPropertyChanged(nameof(NewTaskFlyoutIsOpen));
+            }
+        }
+
         public long NotifyParentID {
             get {
                 return TreeViewModels.ParentID;

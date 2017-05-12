@@ -8,6 +8,16 @@ using System.ComponentModel;
 
 namespace Pyte.Models {
     public static class Methods {
+        public static bool TextIsEmpty(string text) {
+            bool flag = true;
+            for (int i = 0; i < text.Length; i++) {
+                if (text[i] != ' ') {
+                    flag = false;
+                }
+            }
+            return flag;
+        }
+
         public static Dictionary<long, Mission> idToMission = new Dictionary<long, Mission>();
 
         public static void MakeConnectWithDict(ObservableCollection<Mission> parametr) {

@@ -41,3 +41,5 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\EditingTas
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\NewTaskFlyoutStyle.g.cs
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\NewTaskFlyoutStyle.baml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForMarksStyle.baml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForMarksStyle.g.cs

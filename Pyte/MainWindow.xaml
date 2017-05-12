@@ -30,18 +30,41 @@
                              Header="Calendar" Theme="Inverse" IsModal="True">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="5*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Calendar Grid.Row="0"></Calendar>
-                    <StackPanel Grid.Row="1" Height="auto" Orientation="Horizontal">
-                        <Button Height="40" Width="40" FontFamily="/Resources/#Entypo"
-                                Margin="5" Style="{DynamicResource MetroCircleButtonStyle}"
-                                FontSize="36">]</Button>
-                        <Button Height="40" Width="40" FontFamily="/Resources/#Entypo"
-                                Margin="5" Style="{DynamicResource MetroCircleButtonStyle}"
-                                FontSize="36">\</Button>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Calendar Name="MainCalendar" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                              Margin="2" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"></Calendar>
+                        <Button Name="CalendarShowButton" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                    Background="{StaticResource MainThemeColor}" Content="Показать"
+                                    FontSize="15" Padding="2" Width="auto" Margin="6" Height="auto" 
+                                    Click="CalendarShowButton_Click"/>
+                    </Grid>
+                    <GroupBox Grid.Row="1" Background="Transparent" BorderBrush="White" Margin="1.5">
+                        <GroupBox.HeaderTemplate>
+                            <ItemContainerTemplate>
+                                <TextBlock Background="Transparent" Foreground="White" FontSize="17"
+                                           Text="Период" FontFamily="Vardana"/>
+                            </ItemContainerTemplate>
+                        </GroupBox.HeaderTemplate>
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <DatePicker Name="StartPeriodDatePicker" Margin="2" Controls:TextBoxHelper.Watermark="Начало периода" />
+                            <DatePicker Name="FinishPeriodDatePicker" Grid.Row="1" Margin="2" Controls:TextBoxHelper.Watermark="Конец периода"/>
+                            <Button Name="PeriodCalendarShowButton" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                    Background="{StaticResource MainThemeColor}" Content="Показать"
+                                    FontSize="15" Padding="2" Width="auto" Height="auto" Click="PeriodCalendarShowButton_Click"/>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </Controls:Flyout>
         </Controls:FlyoutsControl>
@@ -64,6 +87,8 @@
             <TabItem Header="Неделя" Content="{StaticResource AllTasksResources}" />
 
             <TabItem Header="Важное"  Content="{StaticResource AllTasksResources}" />
+
+            <TabItem Header="OnCalendarTask" Content="{StaticResource AllTasksResources}" Visibility="Collapsed" />
 
             <TabItem Header="Заметки"></TabItem>
             <TabItem Header="Документы"></TabItem>

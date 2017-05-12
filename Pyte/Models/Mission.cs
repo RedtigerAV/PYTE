@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows.Data;
 
 namespace Pyte.Models {
+
     public class Mission: INotifyPropertyChanged {
 
         private static long id_counter = 0;
@@ -32,16 +33,29 @@ namespace Pyte.Models {
         }
 
         private void _childrenSource_Filter(object sender, FilterEventArgs e) {
-                Mission item = (Mission)e.Item;
-                if (item == null) {
-                    e.Accepted = false;
-                    return;
-                }
+            Mission item = (Mission)e.Item;
+            if (item == null) {
+                e.Accepted = false;
+                return;
+            }
 
-                item.IsAccepted =  ((Appropriate(item) || Filter == null || Filter(item)) && 
+            if (WorkWithTabControl.InstanceTabControl.SelectedTabItem == 4) {
+
+                item.IsAccepted = Appropriate(item) || ((Filter == null || Filter(item)) &&
                                     (TabControlFilter == null || TabControlFilter(item)));
+            }
+            else {
 
-                e.Accepted = item.IsAccepted;
+                item.IsAccepted = ((Appropriate(item) || Filter == null || Filter(item)) &&
+                                    (TabControlFilter == null || TabControlFilter(item)));
+            }
+
+            if (item.IsAccepted && Appropriate(item))
+                item.IsExpanded = true;
+            else
+                item.IsExpanded = false;
+
+            e.Accepted = item.IsAccepted;
         }
 
         #region Constructors
@@ -59,7 +73,7 @@ namespace Pyte.Models {
 
             IsChecked = false;
             IsImportant = false;
-            Marks = new ObservableCollection<string> { "Lol", "What", "Okey"};
+            Marks = new ObservableCollection<MiniMark> { new MiniMark("Lol"), new MiniMark("What"), new MiniMark("Okey")};
             _childrenSource.Source = Children;
             _childrenSource.Filter += _childrenSource_Filter;
 
@@ -92,6 +106,21 @@ namespace Pyte.Models {
                 OnPropertyChanged("IsSelected");
             }
         }
+        #endregion
+
+        #region IsExpanded
+
+        private bool isExpanded = true;
+        public bool IsExpanded {
+            get {
+                return isExpanded;
+            }
+            set {
+                isExpanded = value;
+                OnPropertyChanged(nameof(IsExpanded));
+            }
+        }
+
         #endregion
 
         #region IsAccepted
@@ -195,8 +224,8 @@ namespace Pyte.Models {
         #endregion
 
         #region Marks
-        private ObservableCollection<string> marks;
-        public ObservableCollection<string> Marks {
+        private ObservableCollection<MiniMark> marks;
+        public ObservableCollection<MiniMark> Marks {
             get {
                 return marks;
             }
@@ -224,6 +253,12 @@ namespace Pyte.Models {
             if (item != null)
                 Children.Add(item);
             ChildrenView?.Refresh();
+        }
+
+        public void RemoveMark(MiniMark item) {
+            if (item != null) {
+                Marks.Remove(item);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

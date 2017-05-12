@@ -26,7 +26,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextAlignment="Center" 
                            FontSize="15" Foreground="{StaticResource MainThemeColor}" Background="White" 
-                           Text="Все задачи" />
+                           Text="{Binding SelectedTabName, Source={x:Static models:WorkWithTabControl.InstanceTabControl}}" />
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 0"
                          Text="{Binding FilterText, Source={x:Static models:WorkWithFilters.Filters}, UpdateSourceTrigger=PropertyChanged}" />
@@ -42,14 +42,15 @@
         </Border>
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
             <Controls:Flyout Name="AddNewMission" Header="Новая задача" Style="{StaticResource FlyoutForTask}"
-                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}">
+                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}"
+                             IsOpen="{Binding NewTaskFlyoutIsOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={x:Static models:NeedToNotifySelectedItem.Instance}}">
                 <Frame Source="NewTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
 
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
             <Controls:Flyout Name="EditingSelectedMission" Header="Редактирование" Style="{StaticResource FlyoutForEditTask}"
-                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}">
+                             DataContext="{Binding models:NeedToNotifySelectedItem.Instance}" >
                 <Frame Source="EditingTaskFlyoutContent.xaml" NavigationUIVisibility="Hidden" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>

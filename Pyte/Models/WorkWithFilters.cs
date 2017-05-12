@@ -69,8 +69,8 @@ namespace Pyte.Models {
         #region OtherFiltering
 
         public void OnOtherFilters() {
-            Predicate<Mission> Filter;
-            int numb = WorkWithTabControl.SelectedTabItem;
+            Predicate<Mission> Filter = null;
+            int numb = WorkWithTabControl.InstanceTabControl.SelectedTabItem;
             if (numb == 0)
                 Filter = null;
             else if (numb == 1) {
@@ -84,12 +84,30 @@ namespace Pyte.Models {
                     return (DateTime.Compare(item.StartDate, DateTime.Today.AddDays(1)) <= 0 &&
                     DateTime.Compare(DateTime.Today.AddDays(1), item.FinishDate) <= 0);
                 };
-            }
-
-            //week filter
-
-            else {
+            } else if(numb == 3) {
+                Filter = (item) => {
+                    DateTime td = DateTime.Today;
+                    int offset = td.DayOfWeek - DayOfWeek.Monday;
+                    offset = (offset < 0) ? 6 : offset;
+                    DateTime LastMonday = td.AddDays(-offset);
+                    DateTime NextSunday = LastMonday.AddDays(6);
+                    return (DateTime.Compare(item.StartDate, NextSunday) <= 0 &&
+                    DateTime.Compare(LastMonday, item.FinishDate) <= 0);
+                };
+            } else if (numb == 4){
                 Filter = item => item.IsImportant;
+            } else {
+                if (WorkWithCalendar.CalendatInstance.calendarWay == 1) {
+                    Filter = (item) => {
+                        return (DateTime.Compare(item.StartDate, WorkWithCalendar.CalendatInstance.FirstWayDay) <= 0 &&
+                        DateTime.Compare(WorkWithCalendar.CalendatInstance.FirstWayDay, item.FinishDate) <= 0);
+                    };
+                } else if (WorkWithCalendar.CalendatInstance.calendarWay == 2) {
+                    Filter = (item) => {
+                        return (DateTime.Compare(item.StartDate, WorkWithCalendar.CalendatInstance.SecondWayFinishDay) <= 0 &&
+                            DateTime.Compare(WorkWithCalendar.CalendatInstance.SecondWayStartDay, item.FinishDate) <= 0);
+                    };
+                }
             }
 
             ApplyOtherFilters(TreeViewModels.Root, Filter);

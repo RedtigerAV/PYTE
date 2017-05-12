@@ -36,10 +36,11 @@ namespace Pyte.Pages {
 
         public AllTasks() {
             InitializeComponent();
+            NeedToNotifySelectedItem.Instance.NewTaskFlyoutIsOpen = false;
             MissionsList.DataContext = TreeViewModels.Root.ChildrenView;
             WorksWithFlyouts.CloseNewTaskFlyout += WorksWithFlyouts_CloseNewTaskFlyout;
             NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += Instance_OpenNewTaskFlyout;
-            WorkWithTabControl.ChangeTabItemEvent += WorkWithTabControl_ChangeTabItemEvent;
+            WorkWithTabControl.InstanceTabControl.ChangeTabItemEvent += WorkWithTabControl_ChangeTabItemEvent;
             WorksWithFlyouts.CloseAllTaskFlyouts += WorksWithFlyouts_CloseAllTaskFlyouts;
         }
 
@@ -61,6 +62,7 @@ namespace Pyte.Pages {
         }
 
         private void Instance_OpenNewTaskFlyout() {
+            NeedToNotifySelectedItem.Instance.NewTaskMarks.Clear();
             AddNewMission.IsOpen = true;
             EditingSelectedMission.IsOpen = false;
         }
@@ -70,6 +72,7 @@ namespace Pyte.Pages {
                 EditingSelectedMission.IsOpen = false;
             }
             WorksWithFlyouts.ClearBlackoutsDate();
+            NeedToNotifySelectedItem.Instance.NewTaskMarks.Clear();
             AddNewMission.IsOpen = true;
 
         }

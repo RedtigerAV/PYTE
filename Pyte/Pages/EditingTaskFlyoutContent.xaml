@@ -8,11 +8,16 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="EditingTaskFlyoutContent"
       xmlns:models="clr-namespace:Pyte.Models"
-      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+      xmlns:converters="clr-namespace:Pyte.Converters"
+      xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      Name="EditingTaskFlyout">
 
     <Grid Background="White">
         <Grid Name="MissionProperty" 
               DataContext="{Binding NeedToNotify, Source={x:Static models:NeedToNotifySelectedItem.Instance}}">
+            <Grid.Resources>
+                <converters:MinMaxDateShowConverter x:Key="showDateConverter" />
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -35,7 +40,7 @@
                                  Grid.Column="1" Grid.Row="0" 
                                  Controls:TextBoxHelper.ClearTextButton="True"
                                  FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1"
-                                 VerticalAlignment="Center"/>
+                                 VerticalAlignment="Center" TextWrapping="Wrap"/>
 
             <TextBlock Grid.Row="1" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
@@ -52,7 +57,7 @@
             <DatePicker Name="StartDateTimePicker" SelectedDate="{Binding StartDate, Mode=OneWay}" 
                         Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="2" Grid.Column="1"
                                      Margin="0, 1, 3, 1"
-                                     FontFamily="Vardana" IsTodayHighlighted="True"/>
+                                     FontFamily="Vardana" IsTodayHighlighted="True" Text="{Binding StartDate, Mode=OneWay, Converter={StaticResource showDateConverter}}"/>
 
             <TextBlock Grid.Row="3" Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                    FontFamily="Vardana" FontSize="15" 
@@ -60,7 +65,7 @@
             <DatePicker Name="FinishDateTimePicker" SelectedDate="{Binding FinishDate, Mode=OneWay}"
                         Controls:TextBoxHelper.Watermark="Введите дату" Grid.Row="3" Grid.Column="1"
                                      Margin="0, 1, 3, 1"
-                                     FontFamily="Vardana">
+                                     FontFamily="Vardana" Text="{Binding FinishDate, Mode=OneWay, Converter={StaticResource showDateConverter}}">
             </DatePicker>
 
             <GroupBox Grid.ColumnSpan="2" Grid.Row="4" Header="Заметки" Foreground="{StaticResource ButtonsIsNotMouseOver}" 
@@ -71,10 +76,14 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                         Controls:TextBoxHelper.Watermark="Введиите заметку" Controls:TextBoxHelper.ButtonFontFamily="Wingdings"
-                         Controls:TextBoxHelper.ButtonContent="Q" Style="{DynamicResource MetroButtonTextBox}"/>
-                    <ListBox Grid.Row="1" ItemsSource="{Binding Marks}" FontSize="12"/>
+                    <TextBox Name="NewMarkTextBox" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                         Controls:TextBoxHelper.Watermark="Введите заметку" Controls:TextBoxHelper.ButtonFontFamily="Wingdings"
+                         Controls:TextBoxHelper.ButtonContent="&#x0021;" Style="{DynamicResource MetroButtonTextBox}"
+                         AcceptsReturn="True" TextWrapping="Wrap" Controls:TextBoxHelper.ButtonCommand="{Binding AddMarkCommand}"
+                             Controls:TextBoxHelper.ButtonCommandParameter="{Binding ElementName=NewMarkTextBox, Path=Text}"/>
+                    <ListBox Name="ListBoxForNewMarks" Grid.Row="1" ItemsSource="{Binding Marks}" Style="{StaticResource ListBoxMarks}" FontSize="12"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             SelectionChanged="MarksListBox_SelectionChanged"/>
                 </Grid>
             </GroupBox>
 

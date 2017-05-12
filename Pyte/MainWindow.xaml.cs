@@ -35,12 +35,55 @@ namespace Pyte {
             var fatherOfEvent = e.OriginalSource as TabControl;
             if (fatherOfEvent != null) {
                 int numb = MainTabControl.SelectedIndex;
-                WorkWithTabControl.SelectedTabItem = numb;
-                //MessageBox.Show($"Blabla: {e.OriginalSource.ToString()}");
-                if (numb >= 0 && numb <= 4) {
-                    WorkWithTabControl.ChangeTabItemMethod();
+                string name = (string)((TabItem)MainTabControl.SelectedItem).Header;
+                WorkWithTabControl.InstanceTabControl.SelectedTabItem = numb;
+                WorkWithTabControl.InstanceTabControl.SelectedTabName = name;
+
+                if (numb == 5) {
+                    if (WorkWithCalendar.CalendatInstance.calendarWay == 1) {
+                        WorkWithTabControl.InstanceTabControl.SelectedTabName = ((DateTime)MainCalendar.SelectedDate).ToString("m");
+                    }
+                    else {
+                        string selectedTabName = "";
+                        if (WorkWithCalendar.CalendatInstance.SecondWayStartDay != DateTime.MinValue.Date)
+                            selectedTabName += "От: " + WorkWithCalendar.CalendatInstance.SecondWayStartDay.ToString("m") + "   ";
+                        if (WorkWithCalendar.CalendatInstance.SecondWayFinishDay != DateTime.MaxValue.Date)
+                            selectedTabName += "До: " + WorkWithCalendar.CalendatInstance.SecondWayFinishDay.ToString("m");
+                        WorkWithTabControl.InstanceTabControl.SelectedTabName = selectedTabName;
+                    }
+                }
+
+                if (numb >= 0 && numb <= 4 || numb == 5) {
+                    WorkWithTabControl.InstanceTabControl.ChangeTabItemMethod();
                 }
             }
+        }
+
+        private void CalendarShowButton_Click(object sender, RoutedEventArgs e) {
+            CalendarFlyouts.IsOpen = false;
+            if ((DateTime)MainCalendar.SelectedDate != null) {
+                WorkWithCalendar.CalendatInstance.calendarWay = 1;
+                WorkWithCalendar.CalendatInstance.FirstWayDay = (DateTime)MainCalendar.SelectedDate;
+                if (MainTabControl.SelectedIndex == 5) {
+                    Dispatcher.BeginInvoke((Action)(() => MainTabControl.SelectedIndex = 0));
+                }
+                Dispatcher.BeginInvoke((Action)(() => MainTabControl.SelectedIndex = 5));
+            }
+        }
+
+        private void PeriodCalendarShowButton_Click(object sender, RoutedEventArgs e) {
+            CalendarFlyouts.IsOpen = false;
+            if (StartPeriodDatePicker.SelectedDate != null || FinishPeriodDatePicker.SelectedDate != null) {
+                WorkWithCalendar.CalendatInstance.calendarWay = 2;
+                WorkWithCalendar.CalendatInstance.SecondWayStartDay = (StartPeriodDatePicker.SelectedDate == null)? DateTime.MinValue.Date : (DateTime)StartPeriodDatePicker.SelectedDate;
+                WorkWithCalendar.CalendatInstance.SecondWayFinishDay = (FinishPeriodDatePicker.SelectedDate == null)? DateTime.MaxValue.Date : (DateTime)FinishPeriodDatePicker.SelectedDate;
+                if (MainTabControl.SelectedIndex == 5) {
+                    Dispatcher.BeginInvoke((Action)(() => MainTabControl.SelectedIndex = 0));
+                }
+                Dispatcher.BeginInvoke((Action)(() => MainTabControl.SelectedIndex = 5));
+            }
+            StartPeriodDatePicker.Text = "";
+            FinishPeriodDatePicker.Text = "";
         }
     }
 }

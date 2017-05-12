@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pyte.Styles"
+                    xmlns:models="clr-namespace:Pyte.Models"
+                    xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    xmlns:converters="clr-namespace:Pyte.Converters"
+                    x:Class="Pyte.Styles.ListBoxForMarksStyle"
+                    x:ClassModifier="public">
+
+    <converters:WidthMarkConverter x:Key="MarkWidth" />
+
+    <Style TargetType="ListBox" x:Key="ListBoxMarks">
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border BorderThickness="0, 0, 0, 0.5" BorderBrush="{StaticResource SeparatorGreyColor}" 
+                            Margin="0">
+                        <Grid Margin="1" Background="Transparent" Name="MarkGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0" Name="MarkTextBox" FontSize="14" Text="{Binding MarkText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                     TextWrapping="Wrap" TextAlignment="Left" AcceptsReturn="True" BorderThickness="0"
+                                     Margin="1" Controls:TextBoxHelper.Watermark="Пустая заметка"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="1">
+                                <TextBlock FontSize="11" Text="{Binding MarkDate}" VerticalAlignment="Center" Height="auto"/>
+                                <Button Name="DelMarkButton" BorderThickness="0" Height="auto" Width="auto" Content="Удалить"
+                                        FontSize="11" Margin="4, 0, 0, 0" Foreground="Gray"
+                                        Background="Transparent" Visibility="Hidden" Click="DelMarkButton_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MarkGrid, Path=IsMouseOver}" Value="true">
+                            <Setter TargetName="DelMarkButton" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=DelMarkButton, Path=IsMouseOver}" Value="true">
+                            <Setter TargetName="DelMarkButton" Property="Foreground" Value="Green" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

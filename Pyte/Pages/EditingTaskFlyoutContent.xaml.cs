@@ -21,11 +21,21 @@ namespace Pyte.Pages {
     public partial class EditingTaskFlyoutContent : Page {
         public EditingTaskFlyoutContent() {
             InitializeComponent();
+            NewMarkTextBox.DataContext = this;
+            AddMarkCommand = new DelegateCommand<string>((text) => {
+                if (Methods.TextIsEmpty(text))
+                    return;
+                NeedToNotifySelectedItem.Instance.NeedToNotify.Marks.Insert(0, new MiniMark(text));
+                NewMarkTextBox.Text = "";
+
+            });
             StartDateTimePicker.DisplayDate = DateTime.Today;
             FinishDateTimePicker.DisplayDate = DateTime.Today;
             NeedToNotifySelectedItem.Instance.UpdateDatePicker += Instance_UpdateDatePicker;
             WorksWithFlyouts.ClearBlackouts += WorksWithFlyouts_ClearBlackouts;
         }
+
+        public DelegateCommand<string> AddMarkCommand { get; set; }
 
         private void WorksWithFlyouts_ClearBlackouts() {
             StartDateTimePicker.BlackoutDates.Clear();
@@ -110,7 +120,7 @@ namespace Pyte.Pages {
         }
 
         private void EditMissionButton_Click(object sender, RoutedEventArgs e) {
-            string name = (MissionNameTextBox.Text == "") ? "Без названия" : MissionNameTextBox.Text;
+            string name = (Methods.TextIsEmpty(MissionNameTextBox.Text)) ? "Без названия" : MissionNameTextBox.Text;
             bool isImportant = (bool)ToggleSwitchIsImportant.IsChecked;
             DateTime start, finish;
 
@@ -127,10 +137,29 @@ namespace Pyte.Pages {
             else {
                 finish = (DateTime)FinishDateTimePicker.SelectedDate;
             }
+
+            DateTime helpDateTime;
+            if (DateTime.Compare(finish, start) <= 0) {
+                helpDateTime = finish;
+                finish = start;
+                start = helpDateTime;
+            }
+
             NeedToNotifySelectedItem.Instance.NeedToNotify.Name = name;
             NeedToNotifySelectedItem.Instance.NeedToNotify.IsImportant = isImportant;
             NeedToNotifySelectedItem.Instance.NeedToNotify.StartDate = start;
             NeedToNotifySelectedItem.Instance.NeedToNotify.FinishDate = finish;
+
+            WorkWithFilters.Filters.OnOtherFilters();
+        }
+
+
+        private void MarksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ListBox markList = (ListBox)(sender);
+            MiniMark selectedMark = (MiniMark)markList.SelectedItem;
+            //MessageBox.Show((selectedMark == null)? "Че за хрень1?": selectedMark.MarkText + "1");
+            NeedToNotifySelectedItem.Instance.SelectedMark = selectedMark;
+
         }
     }
 }

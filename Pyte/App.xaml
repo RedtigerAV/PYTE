@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
                 <ResourceDictionary Source="/Styles/TreeViewStyle.xaml" />
                 <ResourceDictionary Source="/Styles/NewTaskFlyoutStyle.xaml" />
+                <ResourceDictionary Source="/Styles/ListBoxForMarksStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

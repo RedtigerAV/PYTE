@@ -9,15 +9,31 @@ using System.ComponentModel;
 namespace Pyte.Models {
     public delegate void ChangeTabItem();
 
-    public static class WorkWithTabControl/*: INotifyPropertyChanged*/ {
-        //public static WorkWithTabControl InstanceTabControl = new WorkWithTabControl();
+    public class WorkWithTabControl: INotifyPropertyChanged {
+        public static WorkWithTabControl InstanceTabControl = new WorkWithTabControl();
 
-        public static event ChangeTabItem ChangeTabItemEvent;
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event ChangeTabItem ChangeTabItemEvent;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public static int SelectedTabItem { get; set; } = 0;
+        private void OnPropetryChanged(string name) {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
 
-        public static void ChangeTabItemMethod() {
+        private string selectedTabName = "Все задачи";
+        public string SelectedTabName {
+            get {
+                return selectedTabName;
+            }
+            set {
+                selectedTabName = value;
+                OnPropetryChanged(nameof(SelectedTabName));
+            }
+        }
+
+        public int SelectedTabItem { get; set; } = 0;
+
+        public void ChangeTabItemMethod() {
             ChangeTabItemEvent?.Invoke();
         }
     }

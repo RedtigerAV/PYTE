@@ -13,14 +13,21 @@
 
     <Style TargetType="TreeView">
         <Setter Property="ItemsSource" Value="{Binding}" />
-        <Setter Property="TreeViewItem.IsExpanded" Value="True" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <HierarchicalDataTemplate ItemsSource="{Binding ChildrenView}">
                     <Border Name="MissionBlock" Margin="2" HorizontalAlignment="Stretch"
-                                BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" Height="40" 
+                                BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" 
+                            Height="40" 
                             SnapsToDevicePixels="True">
                         <Grid>
                             <Border Name="mask" Background="White" CornerRadius="5"/>
@@ -44,7 +51,8 @@
 
                                 <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
                                 <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Vardana" 
-                                           Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center" Foreground="Black"></TextBlock>
+                                           Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center"
+                                           Foreground="Black"></TextBlock>
                                 <Grid Name="PropertyWithButtons" Grid.Column="3" 
                                             VerticalAlignment="Center" Visibility="Hidden">
                                     <Grid.ColumnDefinitions>

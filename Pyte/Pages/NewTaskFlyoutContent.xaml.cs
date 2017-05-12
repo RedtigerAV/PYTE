@@ -22,11 +22,21 @@ namespace Pyte.Pages {
 
         public NewTaskFlyoutContent() {
             InitializeComponent();
+            NewMarkTextBox.DataContext = this;
+            AddMarkCommand_InNewTaskFlyout = new DelegateCommand<string>((text) => {
+                if (Methods.TextIsEmpty(text))
+                    return;
+                NeedToNotifySelectedItem.Instance.NewTaskMarks.Insert(0, new MiniMark(text));
+                NewMarkTextBox.Text = "";
+
+            });
             StartDateTimePicker.DisplayDate = DateTime.Today;
             FinishDateTimePicker.DisplayDate = DateTime.Today;
             NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += DatePickerRange_OpenNewTaskFlyout;
             WorksWithFlyouts.ClearBlackouts += WorksWithFlyouts_ClearBlackouts;
         }
+
+        public DelegateCommand<string> AddMarkCommand_InNewTaskFlyout { get; set; }
 
         private void WorksWithFlyouts_ClearBlackouts() {
             StartDateTimePicker.BlackoutDates.Clear();
@@ -63,7 +73,7 @@ namespace Pyte.Pages {
         private void SaveNewMissionButton_Click(object sender, RoutedEventArgs e) {
             Mission newMission;
 
-            string name = (MissionNameTextBox.Text == "") ? "Без названия" : MissionNameTextBox.Text;
+            string name = (Methods.TextIsEmpty(MissionNameTextBox.Text)) ? "Без названия" : MissionNameTextBox.Text;
 
             newMission = new Mission(name, -1);
             newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
@@ -82,8 +92,17 @@ namespace Pyte.Pages {
                 finish = (DateTime)FinishDateTimePicker.SelectedDate;
             }
 
+            DateTime helpDateTime;
+            if (DateTime.Compare(finish, start) <= 0) {
+                helpDateTime = finish;
+                finish = start;
+                start = helpDateTime;
+            }
+
             newMission.StartDate = start;
             newMission.FinishDate = finish;
+
+            newMission.Marks = NeedToNotifySelectedItem.Instance.NewTaskMarks;
 
 
             if (NeedToNotifySelectedItem.Instance.NotifyOpenFlyout) {
@@ -100,6 +119,16 @@ namespace Pyte.Pages {
             WorksWithFlyouts.CloseFlyout();
             ClearFlyout();
             WorkWithFilters.Filters.OnOtherFilters();
+        }
+
+        private void MarksListBoxNewTask_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            ListBox markList = (ListBox)(sender);
+            if (markList == null)
+                return;
+            MiniMark selectedMark = (MiniMark)markList.SelectedItem;
+            //MessageBox.Show((selectedMark == null) ? "Че за хрень2?" : selectedMark.MarkText + "2");
+            NeedToNotifySelectedItem.Instance.SelectedMark = selectedMark;
+
         }
     }
 }
