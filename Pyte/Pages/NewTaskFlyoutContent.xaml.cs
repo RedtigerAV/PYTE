@@ -118,6 +118,7 @@ namespace Pyte.Pages {
             WorksWithFlyouts.CloseFlyout();
             ClearFlyout();
             WorkWithFilters.Filters.OnOtherFilters();
+            WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
         }
 
         private void MarksListBoxNewTask_SelectionChanged(object sender, SelectionChangedEventArgs e) {

@@ -42,6 +42,18 @@ namespace Pyte.Pages {
             NeedToNotifySelectedItem.Instance.OpenNewTaskFlyout += Instance_OpenNewTaskFlyout;
             WorkWithTabControl.InstanceTabControl.ChangeTabItemEvent += WorkWithTabControl_ChangeTabItemEvent;
             WorksWithFlyouts.CloseAllTaskFlyouts += WorksWithFlyouts_CloseAllTaskFlyouts;
+            WorkWithTabControl.InstanceTabControl.TasksEmptyEvent += InstanceTabControl_TasksEmptyEvent;
+            if (TreeViewModels.Root.ChildrenView.IsEmpty)
+                TasksEmptyTextBlock.Visibility = Visibility.Visible;
+            else
+                TasksEmptyTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void InstanceTabControl_TasksEmptyEvent() {
+            if (TreeViewModels.Root.ChildrenView.IsEmpty)
+                TasksEmptyTextBlock.Visibility = Visibility.Visible;
+            else
+                TasksEmptyTextBlock.Visibility = Visibility.Collapsed;
         }
 
         private void WorksWithFlyouts_CloseAllTaskFlyouts() {

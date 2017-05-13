@@ -29,5 +29,11 @@ namespace Pyte.Models {
             Root.Children[0].Add(new Mission("Lolo", Root.Children[0].ID));
             Methods.MakeConnectWithDict(Root);
         }
+
+        public static bool IsRootChildEmpty {
+            get {
+                return Root.ChildrenView.IsEmpty;
+            }
+        }
     }
 }

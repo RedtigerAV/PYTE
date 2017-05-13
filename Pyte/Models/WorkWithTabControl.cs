@@ -8,12 +8,14 @@ using System.ComponentModel;
 
 namespace Pyte.Models {
     public delegate void ChangeTabItem();
+    public delegate void TasksEmptyDelegate();
 
     public class WorkWithTabControl: INotifyPropertyChanged {
         public static WorkWithTabControl InstanceTabControl = new WorkWithTabControl();
 
         public event ChangeTabItem ChangeTabItemEvent;
         public event PropertyChangedEventHandler PropertyChanged;
+        public event TasksEmptyDelegate TasksEmptyEvent;
 
         private void OnPropetryChanged(string name) {
             if (PropertyChanged != null)
@@ -35,6 +37,10 @@ namespace Pyte.Models {
 
         public void ChangeTabItemMethod() {
             ChangeTabItemEvent?.Invoke();
+        }
+
+        public void OnTasksEmpty() {
+            TasksEmptyEvent?.Invoke();
         }
     }
 }

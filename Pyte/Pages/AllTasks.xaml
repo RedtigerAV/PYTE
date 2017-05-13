@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Pyte.Pages"
       xmlns:models="clr-namespace:Pyte.Models"
       xmlns:styles="clr-namespace:Pyte.Styles"
+      xmlns:converters="clr-namespace:Pyte.Converters"
       xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       mc:Ignorable="d" 
       xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
@@ -24,13 +25,20 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                
                 <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextAlignment="Center" 
                            FontSize="15" Foreground="{StaticResource MainThemeColor}" Background="White" 
                            Text="{Binding SelectedTabName, Source={x:Static models:WorkWithTabControl.InstanceTabControl}}" />
+                
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 0"
                          Text="{Binding FilterText, Source={x:Static models:WorkWithFilters.Filters}, UpdateSourceTrigger=PropertyChanged}" />
-                <TreeView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
+                
+                <TreeView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"/>
+
+                <TextBlock Name="TasksEmptyTextBlock" Grid.Row="2" Text="На данный момент дел нет. Отдыхайте :)" FontSize="20" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontFamily="Verdana" Foreground="{StaticResource ButtonsIsNotMouseOver}"/>
+
                 <Button Grid.Row="2" Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
                         FontFamily="/Resources/#Entypo"

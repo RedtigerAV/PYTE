@@ -56,6 +56,7 @@ namespace Pyte {
                 if (numb >= 0 && numb <= 4 || numb == 5) {
                     WorkWithTabControl.InstanceTabControl.ChangeTabItemMethod();
                 }
+                WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
             }
         }
 

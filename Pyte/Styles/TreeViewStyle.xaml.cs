@@ -47,9 +47,12 @@ namespace Pyte.Styles {
 
             Methods.RemoveMissionFromDict(IdsToDelete);
 
+            WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
+
         }
 
         private void MakeMissionFinish_Click(object sender, RoutedEventArgs e) {
+            WorksWithFlyouts.CloseAllFlyouts();
             long id = (long)((Button)e.OriginalSource).Tag;
             Methods.idToMission[id].IsFinished = !Methods.idToMission[id].IsFinished;
             Methods.MakeChildrenFinished(Methods.idToMission[id]);
