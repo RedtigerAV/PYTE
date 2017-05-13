@@ -18,7 +18,7 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Border Name="BorderFirst" Grid.Column="0" Margin="2" BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource SeparatorGreyColor}">
-            <Grid Name="MissionsList" HorizontalAlignment="Stretch">
+            <Grid Name="MissionsList" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -30,7 +30,7 @@
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 0"
                          Text="{Binding FilterText, Source={x:Static models:WorkWithFilters.Filters}, UpdateSourceTrigger=PropertyChanged}" />
-                <TreeView Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
+                <TreeView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"></TreeView>
                 <Button Grid.Row="2" Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
                         FontFamily="/Resources/#Entypo"

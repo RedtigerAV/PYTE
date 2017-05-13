@@ -27,7 +27,7 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding ChildrenView}">
                     <Border Name="MissionBlock" Margin="2" HorizontalAlignment="Stretch"
                                 BorderBrush="Black" BorderThickness="1" CornerRadius="6" Padding="1" 
-                            Height="40" 
+                            Height="40"
                             SnapsToDevicePixels="True">
                         <Grid>
                             <Border Name="mask" Background="White" CornerRadius="5"/>
@@ -50,15 +50,17 @@
                                            VerticalAlignment="Stretch" RadiusX="3" RadiusY="3" Fill="Gray"></Rectangle>
 
                                 <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
-                                <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Vardana" 
+                                <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Verdana" 
                                            Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center"
-                                           Foreground="Black"></TextBlock>
+                                           Foreground="Black" TextTrimming="CharacterEllipsis"></TextBlock>
                                 <Grid Name="PropertyWithButtons" Grid.Column="3" 
                                             VerticalAlignment="Center" Visibility="Hidden">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
@@ -70,11 +72,11 @@
                                             ToolTip="Добавить подзадачу" Click="AddSubMission_Click" Tag="{Binding Path=ID}">]</Button>
 
                                     <Button Name="MakeMissionFinish" Grid.Column="1" Height="36" Width="36" FontFamily="/Resources/#Entypo"
-                                            Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
+                                            Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"  Tag="{Binding Path=ID}" 
                                             FontSize="36" HorizontalContentAlignment="Center" 
                                             VerticalContentAlignment="Center" BorderThickness="0"
                                             Foreground="{StaticResource ButtonsIsNotMouseOver}"
-                                            ToolTip="Завершить">W</Button>
+                                            ToolTip="Завершить" Click="MakeMissionFinish_Click">W</Button>
 
                                     <Button Name="MakeMissionImportant" Grid.Column="2" Click="MakeMissionImportant_Click" Tag="{Binding Path=ID}" 
                                             Height="36" Width="36" FontFamily="/Resources/#Entypo"
@@ -83,7 +85,15 @@
                                             VerticalContentAlignment="Center" BorderThickness="0"
                                             Foreground="{StaticResource ButtonsIsNotMouseOver}"
                                             ToolTip="Важное">7</Button>
-                                    <Grid Grid.Column="3" Background="Transparent" HorizontalAlignment="Stretch"/>
+                                    
+                                    <Button Name="DeleteMissionButton" Grid.Column="3" Tag="{Binding Path=ID}" 
+                                            Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                                            Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
+                                            FontSize="33" HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center" BorderThickness="0"
+                                            Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                            ToolTip="Удалить" Click="DeleteMissionButton_Click">u</Button>
+                                    <Grid Grid.Column="4" Background="Transparent" HorizontalAlignment="Stretch"/>
 
                                 </Grid>
                                 <Grid Grid.Column="4" HorizontalAlignment="Right" Width="auto" Height="auto">
@@ -112,6 +122,18 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PropertyWithButtons" Property="Visibility" Value="Visible"></Setter>
                         </MultiDataTrigger>
+
+                        <DataTrigger Binding="{Binding IsFinished}" Value="True">
+                            <Setter TargetName="MissionBlock" Property="Opacity" Value="0.3"/>
+                            <Setter TargetName="MissionChecked" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="MakeMissionFinish" Property="Foreground" Value="Red" />
+                            <Setter TargetName="AddSubMission" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="MakeMissionImportant" Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding IsFatherFinished}" Value="True">
+                            <Setter TargetName="MakeMissionFinish" Property="IsEnabled" Value="False" />
+                        </DataTrigger>
 
                         <DataTrigger Binding="{Binding Path=StartDate, Converter={StaticResource isMinDateConverter}}" Value="True">
                             <Setter TargetName="StartDateTextBlock" Property="Visibility" Value="Collapsed" />
@@ -145,6 +167,10 @@
 
                         <DataTrigger Binding="{Binding ElementName=MakeMissionFinish, Path=IsMouseOver}" Value="True">
                             <Setter TargetName="MakeMissionFinish" Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        
+                        <DataTrigger Binding="{Binding ElementName=DeleteMissionButton, Path=IsMouseOver}" Value="True">
+                            <Setter TargetName="DeleteMissionButton" Property="Foreground" Value="Black" />
                         </DataTrigger>
 
                     </HierarchicalDataTemplate.Triggers>

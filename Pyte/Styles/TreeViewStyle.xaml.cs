@@ -33,5 +33,26 @@ namespace Pyte.Styles {
             NeedToNotifySelectedItem.Instance.NotifyParentID = id;
             NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = true;
         }
+
+        private void DeleteMissionButton_Click(object sender, RoutedEventArgs e) {
+            long id = (long)((Button)e.OriginalSource).Tag;
+            WorksWithFlyouts.CloseAllFlyouts();
+            WorksWithFlyouts.ClearBlackoutsDate();
+
+            List<long> IdsToDelete = new List<long>();
+
+            Methods.GetAllId(Methods.idToMission[id], ref IdsToDelete);
+
+            Methods.idToMission[id].Remove();
+
+            Methods.RemoveMissionFromDict(IdsToDelete);
+
+        }
+
+        private void MakeMissionFinish_Click(object sender, RoutedEventArgs e) {
+            long id = (long)((Button)e.OriginalSource).Tag;
+            Methods.idToMission[id].IsFinished = !Methods.idToMission[id].IsFinished;
+            Methods.MakeChildrenFinished(Methods.idToMission[id]);
+        }
     }
 }

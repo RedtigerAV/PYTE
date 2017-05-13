@@ -104,13 +104,13 @@ namespace Pyte.Pages {
             #endregion
 
             #region Ограничение задачи относительно задачи-отца
-            if (NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID != -1 && Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].StartDate != DateTime.MinValue.Date) {
+            if (NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID != 0 && Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].StartDate != DateTime.MinValue.Date) {
                 DateTime minDate = Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].StartDate.AddDays(-1);
                 CalendarDateRange rangeMin = new CalendarDateRange(DateTime.MinValue.Date.AddDays(1), minDate);
                 StartDateTimePicker.BlackoutDates.Add(rangeMin);
                 FinishDateTimePicker.BlackoutDates.Add(rangeMin);
             }
-            if (NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID != -1 && Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].FinishDate != DateTime.MaxValue.Date) {
+            if (NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID != 0 && Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].FinishDate != DateTime.MaxValue.Date) {
                 DateTime maxDate = Methods.idToMission[NeedToNotifySelectedItem.Instance.NeedToNotify.FatherID].FinishDate.AddDays(1);
                 CalendarDateRange rangeMax = new CalendarDateRange(maxDate, DateTime.MaxValue.Date.AddDays(-1));
                 StartDateTimePicker.BlackoutDates.Add(rangeMax);

@@ -85,6 +85,8 @@
     <Compile Include="Models\Methods.cs" />
     <Compile Include="Models\MiniMark.cs" />
     <Compile Include="Models\NeedToNotifySelectedItem.cs" />
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\NotesList.cs" />
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Models\WorksWithFlyouts.cs" />
     <Compile Include="Models\WorkWithCalendar.cs" />
@@ -92,6 +94,9 @@
     <Compile Include="Models\WorkWithTabControl.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewRichTextEditor.xaml.cs">
+      <DependentUpon>NewRichTextEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NewTaskFlyoutContent.xaml.cs">
       <DependentUpon>NewTaskFlyoutContent.xaml</DependentUpon>
@@ -133,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\NewRichTextEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\NewTaskFlyoutContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +171,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ListBoxForMarksStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBoxForNotesStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

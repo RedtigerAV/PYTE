@@ -24,10 +24,10 @@ namespace Pyte.Models {
         public static Mission Root = new Mission("Root", -1);
 
         static TreeViewModels() {
-            Root.Add(new Mission("Сходить в магазин", -1));
-            Root.Add(new Mission("Прибраться в комнате", -1));
+            Root.Add(new Mission("Сходить в магазин", 0));
+            Root.Add(new Mission("Прибраться в комнате", 0));
             Root.Children[0].Add(new Mission("Lolo", Root.Children[0].ID));
-            Methods.MakeConnectWithDict(Root.Children);
+            Methods.MakeConnectWithDict(Root);
         }
     }
 }

@@ -90,7 +90,9 @@
 
             <TabItem Header="OnCalendarTask" Content="{StaticResource AllTasksResources}" Visibility="Collapsed" />
 
-            <TabItem Header="Заметки"></TabItem>
+            <TabItem Header="Заметки">
+                <Frame Source="Pages/Notes.xaml" NavigationUIVisibility="Hidden" />
+            </TabItem>
             <TabItem Header="Документы"></TabItem>
             <TabItem Header="Расписание"></TabItem>
             <TabItem Header="Списки"></TabItem>

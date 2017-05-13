@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Pyte.Models;
 
 namespace Pyte.Pages {
     /// <summary>
@@ -20,6 +21,11 @@ namespace Pyte.Pages {
     public partial class Notes : Page {
         public Notes() {
             InitializeComponent();
+            NotesListBox.ItemsSource = NotesList.InstanceNoteList.AllNotes;
+        }
+
+        private void Add_Note_Click(object sender, RoutedEventArgs e) {
+            AddNewNote.IsOpen = true;
         }
     }
 }

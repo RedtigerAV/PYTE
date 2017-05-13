@@ -25,7 +25,7 @@ namespace Pyte.Models {
 
         public bool Appropriate(Mission item) {
             bool flag = false;
-            foreach (Mission it in item.ChildrenView) {
+            foreach (Mission it in item.Children) {
                 if (it.IsAccepted)
                     flag = true;
             }
@@ -41,8 +41,8 @@ namespace Pyte.Models {
 
             if (WorkWithTabControl.InstanceTabControl.SelectedTabItem == 4) {
 
-                item.IsAccepted = Appropriate(item) || ((Filter == null || Filter(item)) &&
-                                    (TabControlFilter == null || TabControlFilter(item)));
+                item.IsAccepted = (Appropriate(item) || ((Filter == null || Filter(item)) &&
+                                    (TabControlFilter == null || TabControlFilter(item))));
             }
             else {
 
@@ -65,6 +65,8 @@ namespace Pyte.Models {
             FatherID = fathID;
             IsAccepted = true;
             ID = id_counter;
+            IsFinished = false;
+            IsFatherFinished = false;
             Name = name;
             IsSelected = false;
             id_counter++;
@@ -223,6 +225,19 @@ namespace Pyte.Models {
         }
         #endregion
 
+        #region IsFatherFinished
+        private bool isFatherFinished;
+        public bool IsFatherFinished {
+            get {
+                return isFatherFinished;
+            }
+            set {
+                isFatherFinished = value;
+                OnPropertyChanged(nameof(IsFatherFinished));
+            }
+        }
+        #endregion
+
         #region Marks
         private ObservableCollection<MiniMark> marks;
         public ObservableCollection<MiniMark> Marks {
@@ -253,6 +268,15 @@ namespace Pyte.Models {
             if (item != null)
                 Children.Add(item);
             ChildrenView?.Refresh();
+        }
+
+        public void Remove() {
+            long fathId;
+            if (this != null) {
+                fathId = this.FatherID;
+                Methods.idToMission[fathId].Children.Remove(this);
+                Methods.idToMission[fathId].ChildrenView?.Refresh();
+            }
         }
 
         public void RemoveMark(MiniMark item) {

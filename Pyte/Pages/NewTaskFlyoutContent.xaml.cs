@@ -75,7 +75,7 @@ namespace Pyte.Pages {
 
             string name = (Methods.TextIsEmpty(MissionNameTextBox.Text)) ? "Без названия" : MissionNameTextBox.Text;
 
-            newMission = new Mission(name, -1);
+            newMission = new Mission(name, 0);
             newMission.IsImportant = (bool)ToggleSwitchIsImportant.IsChecked;
 
             DateTime start, finish;
@@ -104,17 +104,16 @@ namespace Pyte.Pages {
 
             newMission.Marks = NeedToNotifySelectedItem.Instance.NewTaskMarks;
 
+            long id = (long)((Button)e.OriginalSource).Tag;
 
             if (NeedToNotifySelectedItem.Instance.NotifyOpenFlyout) {
                 NeedToNotifySelectedItem.Instance.NotifyOpenFlyout = false;
-                long id = (long)((Button)e.OriginalSource).Tag;
                 newMission.FatherID = id;
-                Methods.idToMission[id].Add(newMission);
             }
             else {
-                TreeViewModels.Root.Add(newMission);
-                
+                newMission.FatherID = 0;
             }
+            Methods.idToMission[newMission.FatherID].Add(newMission);
             Methods.idToMission[newMission.ID] = newMission;
             WorksWithFlyouts.CloseFlyout();
             ClearFlyout();

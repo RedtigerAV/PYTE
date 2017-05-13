@@ -43,3 +43,6 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\NewTaskFl
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\NewTaskFlyoutStyle.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForMarksStyle.baml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForMarksStyle.g.cs
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\NewRichTextEditor.g.cs
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Pages\NewRichTextEditor.baml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForNotesStyle.baml
