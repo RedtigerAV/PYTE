@@ -28,6 +28,7 @@
                 
                 <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextAlignment="Center" 
                            FontSize="15" Foreground="{StaticResource MainThemeColor}" Background="White" 
+                           FontFamily="Verdana"
                            Text="{Binding SelectedTabName, Source={x:Static models:WorkWithTabControl.InstanceTabControl}}" />
                 
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  

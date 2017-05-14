@@ -43,7 +43,8 @@
                                 <TextBlock FontSize="11" Text="{Binding NoteDateTimeCreate}" VerticalAlignment="Center" Height="auto"/>
                                 <Button Name="DelNoteButton" BorderThickness="0" Height="auto" Width="auto" Content="Удалить"
                                         FontSize="11" Margin="4, 0, 0, 0" Foreground="Gray"
-                                        Background="Transparent" Visibility="Hidden"/>
+                                        Background="Transparent" Visibility="Hidden" Click="DelNoteButton_Click"
+                                        Tag="{Binding}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

@@ -44,6 +44,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\De.TorstenMandelkow.MetroChart.dll</HintPath>
     </Reference>
+    <Reference Include="GemBox.Document, Version=27.3.30.1016, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL" />
     <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -95,9 +96,6 @@
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
       <DependentUpon>EditingTaskFlyoutContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewRichTextEditor.xaml.cs">
-      <DependentUpon>NewRichTextEditor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\NewTaskFlyoutContent.xaml.cs">
       <DependentUpon>NewTaskFlyoutContent.xaml</DependentUpon>
     </Compile>
@@ -138,10 +136,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditingTaskFlyoutContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\NewRichTextEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,6 +247,25 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IconsForRTB\AlignCenter.png" />
+    <Resource Include="IconsForRTB\AlignJustify.png" />
+    <Resource Include="IconsForRTB\AlignLeft.png" />
+    <Resource Include="IconsForRTB\AlignRight.png" />
+    <Resource Include="IconsForRTB\Copy.png" />
+    <Resource Include="IconsForRTB\Cut.png" />
+    <Resource Include="IconsForRTB\DecreaseFontSize.png" />
+    <Resource Include="IconsForRTB\DecreaseIndentation.png" />
+    <Resource Include="IconsForRTB\IncreaseFontSize.png" />
+    <Resource Include="IconsForRTB\IncreaseIndentation.png" />
+    <Resource Include="IconsForRTB\Open.png" />
+    <Resource Include="IconsForRTB\Paste.png" />
+    <Resource Include="IconsForRTB\Redo.png" />
+    <Resource Include="IconsForRTB\Save.png" />
+    <Resource Include="IconsForRTB\ToggleBullets.png" />
+    <Resource Include="IconsForRTB\ToggleNumbering.png" />
+    <Resource Include="IconsForRTB\Undo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

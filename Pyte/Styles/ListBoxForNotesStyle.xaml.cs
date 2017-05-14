@@ -26,5 +26,12 @@ namespace Pyte.Styles {
             Note note = (Note)((Button)e.OriginalSource).Tag;
             note.IsImportant = !note.IsImportant;
         }
+
+        private void DelNoteButton_Click(object sender, RoutedEventArgs e) {
+            Note note = (Note)((Button)e.OriginalSource).Tag;
+            if (note == null)
+                return;
+            NotesList.InstanceNoteList.AllNotes.Remove(note);
+        }
     }
 }

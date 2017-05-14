@@ -52,7 +52,7 @@
                                 <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
                                 <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Verdana" 
                                            Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center"
-                                           Foreground="Black" TextTrimming="CharacterEllipsis"></TextBlock>
+                                           Foreground="Black" TextTrimming="CharacterEllipsis" MaxWidth="210"></TextBlock>
                                 <Grid Name="PropertyWithButtons" Grid.Column="3" 
                                             VerticalAlignment="Center" Visibility="Hidden">
                                     <Grid.ColumnDefinitions>

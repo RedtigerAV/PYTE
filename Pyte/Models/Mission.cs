@@ -275,7 +275,7 @@ namespace Pyte.Models {
             if (this != null) {
                 fathId = FatherID;
                 Methods.idToMission[fathId].Children.Remove(this);
-                Methods.idToMission[fathId].ChildrenView?.Refresh();
+                TreeViewModels.Root.ChildrenView?.Refresh();
             }
         }
 

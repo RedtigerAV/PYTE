@@ -30,7 +30,8 @@
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 1" />
                 <ListBox Grid.Row="2" Name="NotesListBox" 
-                         Style="{StaticResource NotesListBoxStyle}"></ListBox>
+                         Style="{StaticResource NotesListBoxStyle}"
+                         SelectionChanged="NotesListBox_SelectionChanged"></ListBox>
                 <Button Grid.Row="2" Name="Add_Note" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"
                         FontFamily="/Resources/#Entypo"
@@ -42,14 +43,147 @@
             </Grid>
         </Border>
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="AddNewNote" Header="Новая заметка" Style="{StaticResource FlyoutForTask}">
-                <Frame Source="NewRichTextEditor.xaml" NavigationUIVisibility="Hidden" />
-            </Controls:Flyout>
-        </Controls:FlyoutsControl>
+            <Controls:Flyout Name="AddNewNote" Header="{Binding FlyoutHeader}" Style="{StaticResource FlyoutForTask}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-        <Controls:FlyoutsControl Grid.Column="1" Margin="2">
-            <Controls:Flyout Name="EditingSelectedNote" Header="Редактирование" Style="{StaticResource FlyoutForEditTask}">
-                <Frame NavigationUIVisibility="Hidden" />
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                   FontFamily="Vardana"
+                                   Text="Название: " Margin="4" FontSize="15" VerticalAlignment="Center"/>
+                        <TextBox Name="NoteTitleTextBox" Grid.Column="1"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    FontSize="15" FontFamily="Vardana" Foreground="Black" Margin="0, 1, 3, 1"
+                    VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                     TextWrapping="Wrap"/>
+                    </Grid>
+
+                    <ToolBarTray Grid.Row="1" Orientation="Horizontal" Background="#B7EF9C">
+                        <ToolBarTray.Resources>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Width" Value="30"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="FontFamily" Value="Palatino Linotype"/>
+                                <Setter Property="FontSize" Value ="14"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </ToolBarTray.Resources>
+
+                        <ToolBar>
+                            <Button Command="Undo" ToolTip="Отменить">
+                                <Image Source="/Pyte;component/IconsForRTB/Undo.png"/>
+                            </Button>
+                            <Button Command="Redo" ToolTip="Вернуть">
+                                <Image Source="/Pyte;component/IconsForRTB/Redo.png"/>
+                            </Button>
+                            <Separator/>
+                            <Button Command="Cut" ToolTip="Вырезать">
+                                <Image Source="/Pyte;component/IconsForRTB/Cut.png"/>
+                            </Button>
+                            <Button Command="Copy" ToolTip="Копировать">
+                                <Image Source="/Pyte;component/IconsForRTB/Copy.png"/>
+                            </Button>
+                            <Button Command="Paste" ToolTip="Вставить">
+                                <Image Source="/Pyte;component/IconsForRTB/Paste.png"/>
+                            </Button>
+                            <Separator/>
+                            <Button Command="ToggleBold" ToolTip="Жирный (Ctrl+B)">
+                                <TextBlock Text="B" FontWeight="Bold"/>
+                            </Button>
+                            <Button Command="ToggleItalic" ToolTip="Курсив (Ctrl+I)">
+                                <TextBlock Text="I" FontStyle="Italic"/>
+                            </Button>
+                            <Button Command="ToggleUnderline" ToolTip="Подчеркнутый (Ctrl+U)">
+                                <TextBlock Text="U" TextDecorations="Underline"/>
+                            </Button>
+                            <Separator/>
+                            <Button Command="IncreaseFontSize" ToolTip="Увеличить размер шрифта (Ctrl+OemCloseBrackets)">
+                                <Image Source="/Pyte;component/IconsForRTB/IncreaseFontSize.png"/>
+                            </Button>
+                            <Button Command="DecreaseFontSize" ToolTip="Уменьшить размер шрифта (Ctrl+OemOpenBrackets)">
+                                <Image Source="/Pyte;component/IconsForRTB/DecreaseFontSize.png"/>
+                            </Button>
+                            <Separator/>
+                            <Button Command="ToggleBullets" ToolTip="Маркеры (Ctrl+Shift+L)">
+                                <Image Source="/Pyte;component/IconsForRTB/ToggleBullets.png"/>
+                            </Button>
+                            <Button Command="ToggleNumbering" ToolTip="Нумерация (Ctrl+Shift+N)">
+                                <Image Source="/Pyte;component/IconsForRTB/ToggleNumbering.png"/>
+                            </Button>
+                            <Separator/>
+                            <Button Command="AlignLeft" ToolTip="Выровнять по левому краю (Ctrl+L)">
+                                <Image Source="/Pyte;component/IconsForRTB/AlignLeft.png"/>
+                            </Button>
+                            <Button Command="AlignCenter" ToolTip="Выровнять по центру (Ctrl+E)">
+                                <Image Source="/Pyte;component/IconsForRTB/AlignCenter.png"/>
+                            </Button>
+                            <Button Command="AlignRight" ToolTip="Выровнять по правому краю (Ctrl+R)">
+                                <Image Source="/Pyte;component/IconsForRTB/AlignRight.png"/>
+                            </Button>
+                            <Button Command="AlignJustify" ToolTip="Выровнять по ширине (Ctrl+J)">
+                                <Image Source="/Pyte;component/IconsForRTB/AlignJustify.png"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+
+                    <RichTextBox Name="RichTexBox_NewNote" Grid.Row="2" HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Stretch" Margin="3" BorderThickness="2"/>
+                    <Grid Grid.Row="3" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.CommandBindings>
+                            <CommandBinding Command="Open" Executed="Open"/>
+                            <CommandBinding Command="Save" Executed="Save" CanExecute="CanSave" />
+                            <CommandBinding Command="SaveAs" Executed="Save" CanExecute="CanSave" />
+                        </Grid.CommandBindings>
+                        <Grid Background="Transparent" HorizontalAlignment="Stretch" />
+
+                        <Button Name="SaveInPyte" Grid.Column="1"
+                    Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                    FontSize="33" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" BorderThickness="2"
+                    Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                    ToolTip="Сохранить" Click="SaveInPyte_Click">x</Button>
+
+                        <Button Name="SaveInDisl" Grid.Column="2" Command="Save"
+                    Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                    FontSize="33" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" BorderThickness="2"
+                    Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                    ToolTip="Загрузить на диск">v</Button>
+
+                        <Button Name="OpenFromDisk" Grid.Column="3" Command="Open"
+                    Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                    Margin="2" Style="{DynamicResource MetroCircleButtonStyle}"
+                    FontSize="33" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" BorderThickness="2"
+                    Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                    ToolTip="Загрузить с диска">w</Button>
+
+                    </Grid>
+                </Grid>
             </Controls:Flyout>
         </Controls:FlyoutsControl>
 

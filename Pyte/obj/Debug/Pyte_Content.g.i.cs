@@ -8,6 +8,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons/rsz_icon-transparent.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/aligncenter.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/alignjustify.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/alignleft.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/alignright.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/copy.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/cut.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/decreasefontsize.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/decreaseindentation.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/increasefontsize.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/increaseindentation.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/open.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/paste.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/redo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/save.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/togglebullets.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/togglenumbering.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconsforrtb/undo.png")]
 
 
