@@ -102,7 +102,9 @@ namespace Pyte.Pages {
             newMission.StartDate = start;
             newMission.FinishDate = finish;
 
-            newMission.Marks = NeedToNotifySelectedItem.Instance.NewTaskMarks;
+            for (int i = 0; i < NeedToNotifySelectedItem.Instance.NewTaskMarks.Count; i++) {
+                newMission.Marks.Insert(0, new MiniMark(NeedToNotifySelectedItem.Instance.NewTaskMarks[i].MarkText));
+            }
 
             long id = (long)((Button)e.OriginalSource).Tag;
 
