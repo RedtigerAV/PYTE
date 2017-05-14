@@ -273,7 +273,7 @@ namespace Pyte.Models {
         public void Remove() {
             long fathId;
             if (this != null) {
-                fathId = this.FatherID;
+                fathId = FatherID;
                 Methods.idToMission[fathId].Children.Remove(this);
                 Methods.idToMission[fathId].ChildrenView?.Refresh();
             }

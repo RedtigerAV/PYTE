@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Pyte.Models;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows.Documents.Serialization;
 
 namespace Pyte.Pages {
     /// <summary>
@@ -51,13 +54,11 @@ namespace Pyte.Pages {
         }
 
         private void SaveTextButton_Click(object sender, RoutedEventArgs e) {
-            Note newNote = new Note();
-
-            newNote.Title = "Без названия";
-
-            newNote.NoteContent = RichTexBox_NewNote.Document;
+            Note newNote = new Note("Без названия", RichTexBox_NewNote.Document);
 
             NotesList.InstanceNoteList.AllNotes.Add(newNote);
+
+
         }
     }
 }

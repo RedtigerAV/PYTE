@@ -97,6 +97,8 @@ namespace Pyte.Pages {
             }
 
             TreeView tr = (TreeView)sender;
+            if (tr.SelectedItem == null)
+                return;
             Mission SelectedMission = (Mission)tr.SelectedItem;
             //MessageBox.Show($"SelectedMission: {SelectedMission.Name} and {SelectedMission.ID}\n StartDate: {SelectedMission.StartDate.ToString()}\n FinishDate: {SelectedMission.FinishDate.ToString()}\n FatherId: {SelectedMission.FatherID}");
             if (SelectedMission.IsFinished)

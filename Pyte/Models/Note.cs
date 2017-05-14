@@ -16,6 +16,22 @@ namespace Pyte.Models {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        public Note(string title, FlowDocument content) {
+            Title = title;
+            NoteDateTimeCreate = DateTime.Today.ToString("m");
+            NoteContent = content;
+            IsImportant = false;
+        }
+
+        private bool isImportant;
+        public bool IsImportant {
+            get { return isImportant; }
+            set {
+                isImportant = value;
+                OnPropertyChange(nameof(IsImportant));
+            }
+        }
+
         private string title;
         public string Title {
             get { return title; }
@@ -25,8 +41,8 @@ namespace Pyte.Models {
             }
         }
 
-        private DateTime noteDateTimeCreate;
-        public DateTime NoteDateTimeCreate {
+        private string noteDateTimeCreate;
+        public string NoteDateTimeCreate {
             get { return noteDateTimeCreate; }
             set {
                 noteDateTimeCreate = value;

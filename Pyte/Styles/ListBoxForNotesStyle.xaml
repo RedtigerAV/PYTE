@@ -1,7 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Pyte.Styles"
-                    xmlns:models="clr-namespace:Pyte.Models">
+                    xmlns:models="clr-namespace:Pyte.Models"
+                    xmlns:Controls ="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    xmlns:converters="clr-namespace:Pyte.Converters"
+                    x:Class="Pyte.Styles.ListBoxForNotesStyle"
+                    x:ClassModifier="public">
 
     <Style TargetType="ListBox" x:Key="NotesListBoxStyle">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -16,11 +20,53 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Border>
-                        <Grid>
-                            <TextBlock Text="{Binding Title}" />
+                    <Border BorderThickness="0, 0, 0, 0.5" BorderBrush="{StaticResource SeparatorGreyColor}" 
+                            Margin="0">
+                        <Grid Margin="1" Background="Transparent" Name="NoteGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <TextBlock Name="NoteTextBlock" FontSize="14" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
+                                     TextWrapping="Wrap" TextAlignment="Left" Margin="1" VerticalAlignment="Center"/>
+                                <Button Name="MakeNoteImportant" Tag="{Binding}" 
+                                            Height="36" Width="36" FontFamily="/Resources/#Entypo"
+                                            Margin="0, 1, 0, 1" Style="{DynamicResource MetroCircleButtonStyle}"
+                                            FontSize="33" HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center" BorderThickness="0"
+                                            Foreground="{StaticResource ButtonsIsNotMouseOver}"
+                                            ToolTip="Важное" VerticalAlignment="Center" 
+                                            Click="MakeNoteImportant_Click" Visibility="Hidden">7</Button>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="1">
+                                <TextBlock FontSize="11" Text="{Binding NoteDateTimeCreate}" VerticalAlignment="Center" Height="auto"/>
+                                <Button Name="DelNoteButton" BorderThickness="0" Height="auto" Width="auto" Content="Удалить"
+                                        FontSize="11" Margin="4, 0, 0, 0" Foreground="Gray"
+                                        Background="Transparent" Visibility="Hidden"/>
+                            </StackPanel>
                         </Grid>
                     </Border>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=NoteGrid, Path=IsMouseOver}" Value="true">
+                            <Setter TargetName="DelNoteButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MakeNoteImportant" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        
+                        <DataTrigger Binding="{Binding ElementName=DelNoteButton, Path=IsMouseOver}" Value="true">
+                            <Setter TargetName="DelNoteButton" Property="Foreground" Value="Green" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=IsImportant}" Value="True">
+                            <Setter TargetName="MakeNoteImportant" Property="Foreground" Value="{StaticResource MissionIsImportantColor}" />
+                            <Setter TargetName="NoteGrid" Property="Background" Value="#FACA9B" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding ElementName=MakeNoteImportant, Path=IsMouseOver}" Value="True">
+                            <Setter TargetName="MakeNoteImportant" Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </Setter.Value>
         </Setter>

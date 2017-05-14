@@ -104,6 +104,9 @@
     <Compile Include="Styles\ListBoxForMarksStyle.xaml.cs">
       <DependentUpon>ListBoxForMarksStyle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Styles\ListBoxForNotesStyle.xaml.cs">
+      <DependentUpon>ListBoxForNotesStyle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Styles\NewTaskFlyoutStyle.xaml.cs">
       <DependentUpon>NewTaskFlyoutStyle.xaml</DependentUpon>
     </Compile>

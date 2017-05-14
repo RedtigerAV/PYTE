@@ -22,7 +22,9 @@
                 <Button Content="SaveTextButton" Click="SaveTextButton_Click"/>
             </ToolBar>
             <ToolBar>
-                <ToggleButton Name="BoldTextButton" Command="EditingCommands.ToggleBold" IsChecked="False" Click="BoldTextButton_Click" FontWeight="Bold" Content="B"/>
+                <ToggleButton Name="BoldTextButton" Command="EditingCommands.ToggleBold"
+                              IsChecked="False" Click="BoldTextButton_Click" FontWeight="Bold" Content="B"/>
+                <Button Command="EditingCommands.AlignCenter" Content="Center"/>
             </ToolBar>
         </ToolBarTray>
 
