@@ -80,6 +80,12 @@ namespace Pyte.Models {
             StartDate = DateTime.MinValue.Date;
             FinishDate = DateTime.MaxValue.Date;
 
+            FirstColor = true;
+            SecondColor = false;
+            ThirdColor = false;
+            FourthColor = false;
+            FifthColor = false;
+
             IsChecked = false;
             IsImportant = false;
             Marks = new ObservableCollection<MiniMark>();
@@ -104,6 +110,13 @@ namespace Pyte.Models {
             IsImportant = item.IsImportant;
             Marks = item.Marks;
 
+            FirstColor = true;
+            SecondColor = false;
+            ThirdColor = false;
+            FourthColor = false;
+            FifthColor = false;
+
+
             _childrenSource = new CollectionViewSource();
             _childrenSource.Source = Children;
             _childrenSource.Filter += _childrenSource_Filter;
@@ -113,6 +126,46 @@ namespace Pyte.Models {
         #endregion
 
         #region Members
+
+        private bool firstColor;
+        public bool FirstColor { get { return firstColor; }
+            set { firstColor = value;
+                OnPropertyChanged(nameof(FirstColor));
+            }
+        }
+        private bool secondColor;
+        public bool SecondColor {
+            get { return secondColor; }
+            set {
+                secondColor = value;
+                OnPropertyChanged(nameof(SecondColor));
+            }
+        }
+        private bool thirdColor;
+        public bool ThirdColor {
+            get { return thirdColor; }
+            set {
+                thirdColor = value;
+                OnPropertyChanged(nameof(ThirdColor));
+            }
+        }
+        private bool fourthColor;
+        public bool FourthColor {
+            get { return fourthColor; }
+            set {
+                fourthColor = value;
+                OnPropertyChanged(nameof(FourthColor));
+            }
+        }
+        private bool fifthColor;
+        public bool FifthColor {
+            get { return fifthColor; }
+            set {
+                fifthColor = value;
+                OnPropertyChanged(nameof(FifthColor));
+            }
+        }
+
 
         #region Name
         private string name;

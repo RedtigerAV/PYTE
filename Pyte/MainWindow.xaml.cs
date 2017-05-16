@@ -42,7 +42,7 @@ namespace Pyte {
                     formatter.Serialize(fs, TreeViewModels.Root);
                 }
             }
-            catch { MessageBox.Show("Ошибка в сохранении Root"); }
+            catch { MessageBox.Show("Ошибка в сохранении задач, попробуйте еще раз."); }
 
             try {
                 XmlSerializer formatter2note = new XmlSerializer(typeof(ObservableCollection<Note>));
@@ -58,7 +58,7 @@ namespace Pyte {
 
                 SaveNotes(notes, "NotesContent.txt");
             }
-            catch { MessageBox.Show("Ошибка в сохранении AllNotes"); }
+            catch { MessageBox.Show("Ошибка в сохранении заметок, попробуйте еще раз."); }
 
             this.Close();
         }

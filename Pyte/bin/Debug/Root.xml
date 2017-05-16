@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <Mission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FirstColor>true</FirstColor>
+  <SecondColor>false</SecondColor>
+  <ThirdColor>false</ThirdColor>
+  <FourthColor>false</FourthColor>
+  <FifthColor>false</FifthColor>
   <Name>Root</Name>
   <IsSelected>false</IsSelected>
   <IsExpanded>true</IsExpanded>
@@ -15,6 +20,11 @@
   <Marks />
   <Children>
     <Mission>
+      <FirstColor>false</FirstColor>
+      <SecondColor>true</SecondColor>
+      <ThirdColor>false</ThirdColor>
+      <FourthColor>false</FourthColor>
+      <FifthColor>false</FifthColor>
       <Name>Документация к кусровой</Name>
       <IsSelected>false</IsSelected>
       <IsExpanded>true</IsExpanded>
@@ -35,6 +45,11 @@
       </Marks>
       <Children>
         <Mission>
+          <FirstColor>false</FirstColor>
+          <SecondColor>false</SecondColor>
+          <ThirdColor>false</ThirdColor>
+          <FourthColor>false</FourthColor>
+          <FifthColor>true</FifthColor>
           <Name>Показать готовую программу</Name>
           <IsSelected>false</IsSelected>
           <IsExpanded>false</IsExpanded>
@@ -56,6 +71,11 @@
           <Children />
         </Mission>
         <Mission>
+          <FirstColor>false</FirstColor>
+          <SecondColor>false</SecondColor>
+          <ThirdColor>false</ThirdColor>
+          <FourthColor>true</FourthColor>
+          <FifthColor>false</FifthColor>
           <Name>Сделать пояснительную записку</Name>
           <IsSelected>false</IsSelected>
           <IsExpanded>false</IsExpanded>
@@ -74,6 +94,11 @@
       </Children>
     </Mission>
     <Mission>
+      <FirstColor>true</FirstColor>
+      <SecondColor>false</SecondColor>
+      <ThirdColor>false</ThirdColor>
+      <FourthColor>false</FourthColor>
+      <FifthColor>false</FifthColor>
       <Name>Позвонить Лиме Софиевне</Name>
       <IsSelected>false</IsSelected>
       <IsExpanded>false</IsExpanded>
@@ -87,6 +112,61 @@
       <IsFinished>false</IsFinished>
       <IsFatherFinished>false</IsFatherFinished>
       <Marks />
+      <Children />
+    </Mission>
+    <Mission>
+      <FirstColor>true</FirstColor>
+      <SecondColor>false</SecondColor>
+      <ThirdColor>false</ThirdColor>
+      <FourthColor>false</FourthColor>
+      <FifthColor>false</FifthColor>
+      <Name>Сделать My English Lab</Name>
+      <IsSelected>false</IsSelected>
+      <IsExpanded>false</IsExpanded>
+      <IsAccepted>true</IsAccepted>
+      <ID>12</ID>
+      <FatherID>0</FatherID>
+      <StartDate>0001-01-01T00:00:00</StartDate>
+      <FinishDate>2017-05-20T00:00:00</FinishDate>
+      <IsChecked>false</IsChecked>
+      <IsImportant>false</IsImportant>
+      <IsFinished>false</IsFinished>
+      <IsFatherFinished>false</IsFatherFinished>
+      <Marks />
+      <Children />
+    </Mission>
+    <Mission>
+      <FirstColor>false</FirstColor>
+      <SecondColor>false</SecondColor>
+      <ThirdColor>true</ThirdColor>
+      <FourthColor>false</FourthColor>
+      <FifthColor>false</FifthColor>
+      <Name>Купить подарок брату</Name>
+      <IsSelected>false</IsSelected>
+      <IsExpanded>false</IsExpanded>
+      <IsAccepted>true</IsAccepted>
+      <ID>13</ID>
+      <FatherID>0</FatherID>
+      <StartDate>2017-05-12T00:00:00</StartDate>
+      <FinishDate>2017-05-19T00:00:00</FinishDate>
+      <IsChecked>false</IsChecked>
+      <IsImportant>true</IsImportant>
+      <IsFinished>true</IsFinished>
+      <IsFatherFinished>false</IsFatherFinished>
+      <Marks>
+        <MiniMark>
+          <MarkText>Карта</MarkText>
+          <MarkDate>16 мая</MarkDate>
+        </MiniMark>
+        <MiniMark>
+          <MarkText>Очки</MarkText>
+          <MarkDate>16 мая</MarkDate>
+        </MiniMark>
+        <MiniMark>
+          <MarkText>Кошелек</MarkText>
+          <MarkDate>16 мая</MarkDate>
+        </MiniMark>
+      </Marks>
       <Children />
     </Mission>
   </Children>

@@ -102,6 +102,13 @@ namespace Pyte.Pages {
             newMission.StartDate = start;
             newMission.FinishDate = finish;
 
+            newMission.FirstColor = (FirstColor.IsChecked == null) ? false : (bool)FirstColor.IsChecked;
+            newMission.SecondColor = (SecondColor.IsChecked == null) ? false : (bool)SecondColor.IsChecked;
+            newMission.ThirdColor = (ThirdColor.IsChecked == null) ? false : (bool)ThirdColor.IsChecked;
+            newMission.FourthColor = (FourthColor.IsChecked == null) ? false : (bool)FourthColor.IsChecked;
+            newMission.FifthColor = (FifthColor.IsChecked == null) ? false : (bool)FifthColor.IsChecked;
+
+
             for (int i = 0; i < NeedToNotifySelectedItem.Instance.NewTaskMarks.Count; i++) {
                 newMission.Marks.Insert(0, new MiniMark(NeedToNotifySelectedItem.Instance.NewTaskMarks[i].MarkText));
             }

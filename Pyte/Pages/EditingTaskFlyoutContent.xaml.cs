@@ -161,5 +161,60 @@ namespace Pyte.Pages {
             NeedToNotifySelectedItem.Instance.SelectedMark = selectedMark;
 
         }
+
+        private void FirstColor_Click(object sender, RoutedEventArgs e) {
+            Mission task = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            task.FirstColor = false;
+            task.SecondColor = false;
+            task.ThirdColor = false;
+            task.FourthColor = false;
+            task.FifthColor = false;
+
+            task.FirstColor = true;
+        }
+
+        private void SecondColor_Click(object sender, RoutedEventArgs e) {
+            Mission task = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            task.FirstColor = false;
+            task.SecondColor = false;
+            task.ThirdColor = false;
+            task.FourthColor = false;
+            task.FifthColor = false;
+
+            task.SecondColor = true;
+        }
+
+        private void ThirdColor_Click(object sender, RoutedEventArgs e) {
+            Mission task = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            task.FirstColor = false;
+            task.SecondColor = false;
+            task.ThirdColor = false;
+            task.FourthColor = false;
+            task.FifthColor = false;
+
+            task.ThirdColor = true;
+        }
+
+        private void FourthColor_Click(object sender, RoutedEventArgs e) {
+            Mission task = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            task.FirstColor = false;
+            task.SecondColor = false;
+            task.ThirdColor = false;
+            task.FourthColor = false;
+            task.FifthColor = false;
+
+            task.FourthColor = true;
+        }
+
+        private void FifthColor_Click(object sender, RoutedEventArgs e) {
+            Mission task = NeedToNotifySelectedItem.Instance.NeedToNotify;
+            task.FirstColor = false;
+            task.SecondColor = false;
+            task.ThirdColor = false;
+            task.FourthColor = false;
+            task.FifthColor = false;
+
+            task.FifthColor = true;
+        }
     }
 }

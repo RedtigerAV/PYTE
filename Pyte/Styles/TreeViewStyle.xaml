@@ -49,7 +49,7 @@
                                 <Rectangle Name="RectImportant" Grid.Column="0" HorizontalAlignment="Stretch"
                                            VerticalAlignment="Stretch" RadiusX="3" RadiusY="3" Fill="Gray"></Rectangle>
 
-                                <CheckBox Grid.Column="1" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                                <CheckBox Grid.Column="1" Visibility="Collapsed" Name="MissionChecked" Margin="2, 1, 1, 1" IsChecked="{Binding Path=IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
                                 <TextBlock Grid.Column="2" Name="MissionName" FontSize="14" FontFamily="Verdana" 
                                            Text="{Binding Path=Name}" Margin="2" VerticalAlignment="Center"
                                            Foreground="Black" TextTrimming="CharacterEllipsis" MaxWidth="350"></TextBlock>
@@ -122,6 +122,26 @@
                             </MultiDataTrigger.Conditions>
                             <Setter TargetName="PropertyWithButtons" Property="Visibility" Value="Visible"></Setter>
                         </MultiDataTrigger>
+
+                        <DataTrigger Binding="{Binding FirstColor}" Value="true">
+                            <Setter TargetName="MissionGrid" Property="Background" Value="#F2F8EA" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding SecondColor}" Value="true">
+                            <Setter TargetName="MissionGrid" Property="Background" Value="#F3D89F" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding ThirdColor}" Value="true">
+                            <Setter TargetName="MissionGrid" Property="Background" Value="#E7DF86" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding FourthColor}" Value="true">
+                            <Setter TargetName="MissionGrid" Property="Background" Value="#83D6DE" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding FifthColor}" Value="true">
+                            <Setter TargetName="MissionGrid" Property="Background" Value="#EEFF6B" />
+                        </DataTrigger>
 
                         <DataTrigger Binding="{Binding IsFinished}" Value="True">
                             <Setter TargetName="MissionBlock" Property="Opacity" Value="0.3"/>

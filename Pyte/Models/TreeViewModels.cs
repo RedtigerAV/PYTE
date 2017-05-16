@@ -40,7 +40,7 @@ namespace Pyte.Models {
                 Root = new Mission(RootFirst);
 
                 Methods.MakeConnectWithDict(Root);
-            } catch { MessageBox.Show("Ууупс, проблема с файлом загрузки, обратитесь к разработчику"); }
+            } catch (Exception ex) { MessageBox.Show($"Ууупс, проблема с файлом загрузки, обратитесь к разработчику\n{ex.Message}"); }
         }
 
         public static bool IsRootChildEmpty {
