@@ -78,6 +78,15 @@
                                                    Name="MainTabControl" SelectionChanged="MainTabControl_SelectionChanged">
             <Controls:MetroAnimatedSingleRowTabControl.Resources>
                 <Frame x:Key="AllTasksResources" Source="Pages/AllTasks.xaml" NavigationUIVisibility="Hidden"></Frame>
+                <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Stretch" FontFamily="Verdana" FontSize="20" Text="{Binding}" />
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
             </Controls:MetroAnimatedSingleRowTabControl.Resources>
             <TabItem Header="Все задачи" IsSelected="True" Content="{StaticResource AllTasksResources}"></TabItem>
             <TabItem Header="Сегодня" Content="{StaticResource AllTasksResources}" />

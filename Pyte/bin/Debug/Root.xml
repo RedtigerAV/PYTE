@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<Mission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Root</Name>
+  <IsSelected>false</IsSelected>
+  <IsExpanded>true</IsExpanded>
+  <IsAccepted>true</IsAccepted>
+  <ID>0</ID>
+  <FatherID>-1</FatherID>
+  <StartDate>0001-01-01T00:00:00</StartDate>
+  <FinishDate>9999-12-31T00:00:00</FinishDate>
+  <IsChecked>false</IsChecked>
+  <IsImportant>false</IsImportant>
+  <IsFinished>false</IsFinished>
+  <IsFatherFinished>false</IsFatherFinished>
+  <Marks />
+  <Children>
+    <Mission>
+      <Name>Документация к кусровой</Name>
+      <IsSelected>false</IsSelected>
+      <IsExpanded>true</IsExpanded>
+      <IsAccepted>true</IsAccepted>
+      <ID>8</ID>
+      <FatherID>0</FatherID>
+      <StartDate>0001-01-01T00:00:00</StartDate>
+      <FinishDate>2017-05-19T00:00:00</FinishDate>
+      <IsChecked>false</IsChecked>
+      <IsImportant>false</IsImportant>
+      <IsFinished>false</IsFinished>
+      <IsFatherFinished>false</IsFatherFinished>
+      <Marks>
+        <MiniMark>
+          <MarkText>Научный руководитель: Дегтярев Константин Юрьевич</MarkText>
+          <MarkDate>16 мая</MarkDate>
+        </MiniMark>
+      </Marks>
+      <Children>
+        <Mission>
+          <Name>Показать готовую программу</Name>
+          <IsSelected>false</IsSelected>
+          <IsExpanded>false</IsExpanded>
+          <IsAccepted>true</IsAccepted>
+          <ID>9</ID>
+          <FatherID>8</FatherID>
+          <StartDate>2017-05-17T00:00:00</StartDate>
+          <FinishDate>2017-05-17T00:00:00</FinishDate>
+          <IsChecked>false</IsChecked>
+          <IsImportant>false</IsImportant>
+          <IsFinished>false</IsFinished>
+          <IsFatherFinished>false</IsFatherFinished>
+          <Marks>
+            <MiniMark>
+              <MarkText>Спросить, как правильно делать презентацию.</MarkText>
+              <MarkDate>16 мая</MarkDate>
+            </MiniMark>
+          </Marks>
+          <Children />
+        </Mission>
+        <Mission>
+          <Name>Сделать пояснительную записку</Name>
+          <IsSelected>false</IsSelected>
+          <IsExpanded>false</IsExpanded>
+          <IsAccepted>true</IsAccepted>
+          <ID>10</ID>
+          <FatherID>8</FatherID>
+          <StartDate>2017-05-19T00:00:00</StartDate>
+          <FinishDate>2017-05-19T00:00:00</FinishDate>
+          <IsChecked>false</IsChecked>
+          <IsImportant>true</IsImportant>
+          <IsFinished>false</IsFinished>
+          <IsFatherFinished>false</IsFatherFinished>
+          <Marks />
+          <Children />
+        </Mission>
+      </Children>
+    </Mission>
+    <Mission>
+      <Name>Позвонить Лиме Софиевне</Name>
+      <IsSelected>false</IsSelected>
+      <IsExpanded>false</IsExpanded>
+      <IsAccepted>true</IsAccepted>
+      <ID>11</ID>
+      <FatherID>0</FatherID>
+      <StartDate>2017-05-17T00:00:00</StartDate>
+      <FinishDate>2017-05-17T00:00:00</FinishDate>
+      <IsChecked>false</IsChecked>
+      <IsImportant>true</IsImportant>
+      <IsFinished>false</IsFinished>
+      <IsFatherFinished>false</IsFatherFinished>
+      <Marks />
+      <Children />
+    </Mission>
+  </Children>
+</Mission>

@@ -34,11 +34,11 @@
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
                          BorderThickness="1, 1, 1, 0"
                          Text="{Binding FilterText, Source={x:Static models:WorkWithFilters.Filters}, UpdateSourceTrigger=PropertyChanged}" />
-                
-                <TreeView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"/>
 
+                <TreeView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Name="MainTreeView" SelectedItemChanged="TreeView_SelectedItemChanged"/>
+                
                 <TextBlock Name="TasksEmptyTextBlock" Grid.Row="2" Text="На данный момент дел нет. Отдыхайте :)" FontSize="20" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontFamily="Verdana" Foreground="{StaticResource ButtonsIsNotMouseOver}"/>
+                       VerticalAlignment="Center" FontFamily="Verdana" Visibility="Collapsed" Foreground="{StaticResource ButtonsIsNotMouseOver}"/>
 
                 <Button Grid.Row="2" Name="Add_Mission" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                         Content="]"

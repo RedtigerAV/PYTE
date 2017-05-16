@@ -9,6 +9,8 @@ using System.Windows.Data;
 
 
 namespace Pyte.Models {
+
+    [Serializable]
     public class MiniMark : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -22,6 +24,8 @@ namespace Pyte.Models {
             MarkText = text;
             MarkDate = DateTime.Today.Date.ToString("m");
         }
+
+        public MiniMark() { }
 
         #region Members
 

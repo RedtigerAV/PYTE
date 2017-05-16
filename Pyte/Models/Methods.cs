@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Data;
 
 namespace Pyte.Models {
     public static class Methods {
@@ -22,6 +23,10 @@ namespace Pyte.Models {
 
         public static void MakeConnectWithDict(Mission parametr) {
             idToMission[parametr.ID] = parametr;
+            parametr._childrenSource = new CollectionViewSource();
+            parametr._childrenSource.Source = parametr.Children;
+            parametr._childrenSource.Filter += parametr._childrenSource_Filter;
+            parametr.ChildrenView.Refresh();
 
             for (int i = 0; i < parametr.Children.Count; i++) {
                 MakeConnectWithDict(parametr.Children[i]);

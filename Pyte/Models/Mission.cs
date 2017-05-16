@@ -6,23 +6,30 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
+using MongoDB.Bson.Serialization.Attributes;
+using System.Xml.Serialization;
 
 namespace Pyte.Models {
 
+    [Serializable]
     public class Mission: INotifyPropertyChanged {
 
-        private static long id_counter = 0;
+        public static long id_counter = 0;
 
+        [XmlIgnore]
         public Predicate<Mission> Filter { get; set; }
 
+        [XmlIgnore]
         public Predicate<Mission> TabControlFilter { get; set; } = null;
 
+        [XmlIgnore]
         public ICollectionView ChildrenView {
             get { return _childrenSource.View; }
         }
 
-        private readonly CollectionViewSource _childrenSource = new CollectionViewSource();
-
+        [XmlIgnore]
+        public CollectionViewSource _childrenSource = new CollectionViewSource();
+        
         public bool Appropriate(Mission item) {
             bool flag = false;
             foreach (Mission it in item.Children) {
@@ -32,7 +39,7 @@ namespace Pyte.Models {
             return flag;
         }
 
-        private void _childrenSource_Filter(object sender, FilterEventArgs e) {
+        public void _childrenSource_Filter(object sender, FilterEventArgs e) {
             Mission item = (Mission)e.Item;
             if (item == null) {
                 e.Accepted = false;
@@ -75,11 +82,34 @@ namespace Pyte.Models {
 
             IsChecked = false;
             IsImportant = false;
-            Marks = new ObservableCollection<MiniMark> { new MiniMark("Lol"), new MiniMark("What"), new MiniMark("Okey")};
+            Marks = new ObservableCollection<MiniMark>();
+            _childrenSource = new CollectionViewSource();
             _childrenSource.Source = Children;
             _childrenSource.Filter += _childrenSource_Filter;
 
         }
+
+        public Mission(Mission item) {
+            Children = item.Children;
+            FatherID = item.FatherID;
+            IsAccepted = item.IsAccepted;
+            ID = item.ID;
+            isFinished = item.IsFinished;
+            Name = item.Name;
+            IsFatherFinished = item.IsFatherFinished;
+            IsSelected = item.IsSelected;
+            IsChecked = item.IsChecked;
+            StartDate = item.StartDate;
+            FinishDate = item.FinishDate;
+            IsImportant = item.IsImportant;
+            Marks = item.Marks;
+
+            _childrenSource = new CollectionViewSource();
+            _childrenSource.Source = Children;
+            _childrenSource.Filter += _childrenSource_Filter;
+        }
+
+        public Mission() { }
         #endregion
 
         #region Members
@@ -270,6 +300,7 @@ namespace Pyte.Models {
             ChildrenView?.Refresh();
         }
 
+
         public void Remove() {
             long fathId;
             if (this != null) {
@@ -284,7 +315,7 @@ namespace Pyte.Models {
                 Marks.Remove(item);
             }
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName) {

@@ -124,7 +124,7 @@ namespace Pyte.Models {
                 ApplyOtherFilters(child, filter);
             }
 
-            item.ChildrenView.Refresh();
+            item.ChildrenView?.Refresh();
         }
 
         #endregion

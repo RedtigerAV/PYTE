@@ -47,3 +47,10 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxFo
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\Styles\ListBoxForNotesStyle.g.cs
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\GemBox.Document.dll
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\GemBox.Document.xml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Bson.dll
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.dll
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Bson.xml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.xml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.Core.xml

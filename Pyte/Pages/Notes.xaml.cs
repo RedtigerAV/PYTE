@@ -96,30 +96,35 @@ namespace Pyte.Pages {
 
         #region WorkWithDocument
         private void Open(object sender, ExecutedRoutedEventArgs e) {
-            var dialog = new OpenFileDialog() {
-                AddExtension = true,
-                Filter =
-                    "All Documents (*.docx;*.docm;*.doc;*.dotx;*.dotm;*.dot;*.htm;*.html;*.rtf;*.txt)|*.docx;*.docm;*.dotx;*.dotm;*.doc;*.dot;*.htm;*.html;*.rtf;*.txt|" +
-                    "Word Documents (*.docx)|*.docx|" +
-                    "Word Macro-Enabled Documents (*.docm)|*.docm|" +
-                    "Word 97-2003 Documents (*.doc)|*.doc|" +
-                    "Word Templates (*.dotx)|*.dotx|" +
-                    "Word Macro-Enabled Templates (*.dotm)|*.dotm|" +
-                    "Word 97-2003 Templates (*.dot)|*.dot|" +
-                    "Web Pages (*.htm;*.html)|*.htm;*.html|" +
-                    "Rich Text Format (*.rtf)|*.rtf|" +
-                    "Text Files (*.txt)|*.txt"
-            };
+            try {
+                var dialog = new OpenFileDialog() {
+                    AddExtension = true,
+                    Filter =
+                        "All Documents (*.docx;*.docm;*.doc;*.dotx;*.dotm;*.dot;*.htm;*.html;*.rtf;*.txt)|*.docx;*.docm;*.dotx;*.dotm;*.doc;*.dot;*.htm;*.html;*.rtf;*.txt|" +
+                        "Word Documents (*.docx)|*.docx|" +
+                        "Word Macro-Enabled Documents (*.docm)|*.docm|" +
+                        "Word 97-2003 Documents (*.doc)|*.doc|" +
+                        "Word Templates (*.dotx)|*.dotx|" +
+                        "Word Macro-Enabled Templates (*.dotm)|*.dotm|" +
+                        "Word 97-2003 Templates (*.dot)|*.dot|" +
+                        "Web Pages (*.htm;*.html)|*.htm;*.html|" +
+                        "Rich Text Format (*.rtf)|*.rtf|" +
+                        "Text Files (*.txt)|*.txt"
+                };
 
-            if (dialog.ShowDialog() == true)
-                using (var stream = new MemoryStream()) {
-                    DocumentModel.Load(dialog.FileName).Save(stream, SaveOptions.RtfDefault);
+                if (dialog.ShowDialog() == true)
+                    using (var stream = new MemoryStream()) {
+                        DocumentModel.Load(dialog.FileName).Save(stream, SaveOptions.RtfDefault);
 
-                    stream.Position = 0;
+                        stream.Position = 0;
 
-                    var textRange = new TextRange(this.RichTexBox_NewNote.Document.ContentStart, this.RichTexBox_NewNote.Document.ContentEnd);
-                    textRange.Load(stream, DataFormats.Rtf);
-                }
+                        var textRange = new TextRange(this.RichTexBox_NewNote.Document.ContentStart, this.RichTexBox_NewNote.Document.ContentEnd);
+                        textRange.Load(stream, DataFormats.Rtf);
+                    }
+            }
+            catch (Exception) {
+                MessageBox.Show("Данный файл не поддерживается.");
+            }
         }
 
         private void Save(object sender, ExecutedRoutedEventArgs e) {

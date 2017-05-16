@@ -7,14 +7,18 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Xml.Serialization;
 
 namespace Pyte.Models {
+
     [Serializable]
     public class Note : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChange(string name) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        public Note() { }
 
         public Note(string title, FlowDocument content) {
             Title = title;
@@ -49,8 +53,9 @@ namespace Pyte.Models {
                 OnPropertyChange(nameof(NoteDateTimeCreate));
             }
         }
-
+       
         private FlowDocument noteContent;
+        [XmlIgnore]
         public FlowDocument NoteContent {
             get { return noteContent; }
             set {
