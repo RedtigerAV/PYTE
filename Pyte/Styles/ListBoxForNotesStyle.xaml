@@ -28,7 +28,7 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                <TextBlock Name="NoteTextBlock" FontSize="17" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
+                                <TextBlock Name="NoteTextBlock" FontSize="15" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
                                      TextWrapping="Wrap" TextAlignment="Left" FontWeight="DemiBold" Margin="1" VerticalAlignment="Center"/>
                                 <Button Name="MakeNoteImportant" Tag="{Binding}" 
                                             Height="36" Width="36" FontFamily="/Resources/#Entypo"
@@ -60,7 +60,7 @@
 
                         <DataTrigger Binding="{Binding Path=IsImportant}" Value="True">
                             <Setter TargetName="MakeNoteImportant" Property="Foreground" Value="{StaticResource MissionIsImportantColor}" />
-                            <Setter TargetName="NoteTextBlock" Property="FontSize" Value="20" />
+                            <Setter TargetName="NoteTextBlock" Property="FontSize" Value="17" />
                             <Setter TargetName="NoteTextBlock" Property="Foreground" Value="{StaticResource MissionIsImportantColor}" />
                             <Setter TargetName="NoteTextBlock" Property="FontWeight" Value="Bold" />
                         </DataTrigger>

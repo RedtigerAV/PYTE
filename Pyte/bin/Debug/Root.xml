@@ -85,7 +85,7 @@
           <StartDate>2017-05-19T00:00:00</StartDate>
           <FinishDate>2017-05-19T00:00:00</FinishDate>
           <IsChecked>false</IsChecked>
-          <IsImportant>true</IsImportant>
+          <IsImportant>false</IsImportant>
           <IsFinished>false</IsFinished>
           <IsFatherFinished>false</IsFatherFinished>
           <Marks />
@@ -108,7 +108,7 @@
       <StartDate>2017-05-17T00:00:00</StartDate>
       <FinishDate>2017-05-17T00:00:00</FinishDate>
       <IsChecked>false</IsChecked>
-      <IsImportant>true</IsImportant>
+      <IsImportant>false</IsImportant>
       <IsFinished>false</IsFinished>
       <IsFatherFinished>false</IsFatherFinished>
       <Marks />
@@ -150,7 +150,7 @@
       <StartDate>2017-05-12T00:00:00</StartDate>
       <FinishDate>2017-05-19T00:00:00</FinishDate>
       <IsChecked>false</IsChecked>
-      <IsImportant>true</IsImportant>
+      <IsImportant>false</IsImportant>
       <IsFinished>true</IsFinished>
       <IsFatherFinished>false</IsFatherFinished>
       <Marks>

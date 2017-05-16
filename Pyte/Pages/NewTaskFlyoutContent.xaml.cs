@@ -129,6 +129,9 @@ namespace Pyte.Pages {
             WorkWithFilters.Filters.OnOtherFilters();
             WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
 
+            WorkWithChart.AllConditions[0].CountCondition = WorkWithChart.GetCountActive(TreeViewModels.Root);
+            WorkWithChart.AllConditions[1].CountCondition = WorkWithChart.GetCountInActive(TreeViewModels.Root);
+
         }
 
         private void MarksListBoxNewTask_SelectionChanged(object sender, SelectionChangedEventArgs e) {

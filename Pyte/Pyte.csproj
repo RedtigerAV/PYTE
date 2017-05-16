@@ -107,6 +107,7 @@
     <Compile Include="Models\TreeViewModels.cs" />
     <Compile Include="Models\WorksWithFlyouts.cs" />
     <Compile Include="Models\WorkWithCalendar.cs" />
+    <Compile Include="Models\WorkWithChart.cs" />
     <Compile Include="Models\WorkWithFilters.cs" />
     <Compile Include="Models\WorkWithTabControl.cs" />
     <Compile Include="Pages\EditingTaskFlyoutContent.xaml.cs">
@@ -127,6 +128,10 @@
     <Compile Include="Styles\TreeViewStyle.xaml.cs">
       <DependentUpon>TreeViewStyle.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChartColors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

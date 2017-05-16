@@ -36,6 +36,7 @@ namespace Pyte.Pages {
 
         public AllTasks() {
             InitializeComponent();
+            ChartCondition.ItemsSource = WorkWithChart.AllConditions;
             NeedToNotifySelectedItem.Instance.NewTaskFlyoutIsOpen = false;
             MissionsList.DataContext = TreeViewModels.Root.ChildrenView;
             WorksWithFlyouts.CloseNewTaskFlyout += WorksWithFlyouts_CloseNewTaskFlyout;

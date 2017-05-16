@@ -49,6 +49,9 @@ namespace Pyte.Styles {
 
             WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
 
+            WorkWithChart.AllConditions[0].CountCondition = WorkWithChart.GetCountActive(TreeViewModels.Root) - 1;
+            WorkWithChart.AllConditions[1].CountCondition = WorkWithChart.GetCountInActive(TreeViewModels.Root);
+
         }
 
         private void MakeMissionFinish_Click(object sender, RoutedEventArgs e) {
@@ -56,6 +59,9 @@ namespace Pyte.Styles {
             long id = (long)((Button)e.OriginalSource).Tag;
             Methods.idToMission[id].IsFinished = !Methods.idToMission[id].IsFinished;
             Methods.MakeChildrenFinished(Methods.idToMission[id]);
+
+            WorkWithChart.AllConditions[0].CountCondition = WorkWithChart.GetCountActive(TreeViewModels.Root) - 1;
+            WorkWithChart.AllConditions[1].CountCondition = WorkWithChart.GetCountInActive(TreeViewModels.Root);
         }
     }
 }

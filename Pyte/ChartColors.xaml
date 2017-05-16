@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pyte"
+                    xmlns:charts ="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart">
+
+    <charts:ResourceDictionaryCollection x:Key="CustomChartColors">
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Brush1" Color="#2DCC70" />
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="Brush2" Color="#33A828" />
+        </ResourceDictionary>
+    </charts:ResourceDictionaryCollection>
+    
+</ResourceDictionary>

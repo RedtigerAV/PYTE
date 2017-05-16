@@ -32,7 +32,7 @@ namespace Pyte.Pages {
 
         public Notes() {
             InitializeComponent();
-            NotesListBox.ItemsSource = NotesList.InstanceNoteList.AllNotes;
+            NotesListBox.ItemsSource = NotesList.InstanceNoteList.AllNotesView;
             AddNewNote.DataContext = this;
             ComponentInfo.SetLicense("FREE-LIMITED-KEY");
         }

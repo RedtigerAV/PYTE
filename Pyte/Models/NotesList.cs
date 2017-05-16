@@ -14,15 +14,22 @@ using System.Windows;
 
 namespace Pyte.Models {
     [Serializable]
-    public class NotesList {
+    public class NotesList: INotifyPropertyChanged {
 
-        public NotesList() { }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChange(string name) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public static NotesList InstanceNoteList = new NotesList();
+
+        public NotesList() { }
 
         public ObservableCollection<Note> AllNotes;
 
         private static ObservableCollection<FlowDocument> flowNotes;
+
+        private CollectionViewSource notesCollection;
 
         static NotesList() {
             try {
@@ -34,8 +41,46 @@ namespace Pyte.Models {
                 for (int i = 0; i < InstanceNoteList.AllNotes.Count; i++) {
                     InstanceNoteList.AllNotes[i].NoteContent = flowNotes[i];
                 }
+                InstanceNoteList.notesCollection = new CollectionViewSource();
+                InstanceNoteList.notesCollection.Source = InstanceNoteList.AllNotes;
+                InstanceNoteList.notesCollection.Filter += NotesCollection_Filter;
             }
-            catch { MessageBox.Show("Уупс, возможно произошла ошибка с записками. Обратитесь к разработчику."); }
+            catch {  }
+        }
+
+
+        public ICollectionView AllNotesView {
+            get { return InstanceNoteList.notesCollection.View; }
+        }
+
+
+        private string filterNoteText;
+        public string FilterNoteText {
+            get { return filterNoteText; }
+            set {
+                filterNoteText = value;
+                AllNotesView?.Refresh();
+                OnPropertyChange(nameof(FilterNoteText));
+            }
+        }
+
+        private static void NotesCollection_Filter(object sender, FilterEventArgs e) {
+            if (string.IsNullOrEmpty(InstanceNoteList.FilterNoteText)) {
+                e.Accepted = true;
+                return;
+            }
+
+            Note note = e.Item as Note;
+            if (note == null) {
+                e.Accepted = false;
+                return;
+            }
+            if (note.Title.ToUpper().Contains(InstanceNoteList.FilterNoteText.ToUpper())) {
+                e.Accepted = true;
+            }
+            else {
+                e.Accepted = false;
+            }
         }
 
         private static ObservableCollection<FlowDocument> LoadNotes(string fileName) {

@@ -49,6 +49,17 @@
                         BorderThickness="1" Click="Add_Mission_Click" Style="{DynamicResource MetroCircleButtonStyle}"></Button>
             </Grid>
         </Border>
+
+        <charts:PieChart Grid.Column="1" Margin="2" HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch" ChartTitle="Завершенность задач" ChartSubTitle="" 
+                         Background="Transparent" Foreground="{StaticResource ButtonsIsNotMouseOver}" HorizontalContentAlignment="Stretch"
+                         VerticalContentAlignment="Stretch" Palette="{StaticResource CustomChartColors}">
+            <charts:PieChart.Series>
+                <charts:ChartSeries Name="ChartCondition" SeriesTitle="Overall"
+                                    DisplayMember="Condition" ValueMember="CountCondition"></charts:ChartSeries>
+            </charts:PieChart.Series>
+        </charts:PieChart>
+        
         <Controls:FlyoutsControl Grid.Column="1" Margin="2">
             <Controls:Flyout Name="AddNewMission" Header="Новая задача" Style="{StaticResource FlyoutForTask}"
                              DataContext="{Binding models:NeedToNotifySelectedItem.Instance}"

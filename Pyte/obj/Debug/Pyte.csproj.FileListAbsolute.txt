@@ -54,3 +54,4 @@ C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\System.Runtime.I
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Bson.xml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.xml
 C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Антон\Desktop\УЧЕБА\PYTE\Pyte\Pyte\obj\Debug\ChartColors.baml

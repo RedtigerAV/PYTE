@@ -106,6 +106,9 @@ namespace Pyte {
 
                 if (numb >= 0 && numb <= 4 || numb == 5) {
                     WorkWithTabControl.InstanceTabControl.ChangeTabItemMethod();
+
+                    WorkWithChart.AllConditions[0].CountCondition = WorkWithChart.GetCountActive(TreeViewModels.Root) - 1;
+                    WorkWithChart.AllConditions[1].CountCondition = WorkWithChart.GetCountInActive(TreeViewModels.Root);
                 }
                 WorkWithTabControl.InstanceTabControl.OnTasksEmpty();
             }

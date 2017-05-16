@@ -28,7 +28,7 @@
                            FontSize="15" Foreground="{StaticResource MainThemeColor}" Background="White" 
                            Text="Заметки" />
                 <TextBox Name="SearchTextBox" Grid.Row="1" Controls:TextBoxHelper.Watermark="Поиск..."  
-                         BorderThickness="1, 1, 1, 1" />
+                         BorderThickness="1, 1, 1, 1" Text="{Binding FilterNoteText, Source={x:Static models:NotesList.InstanceNoteList}, UpdateSourceTrigger=PropertyChanged}" />
                 <ListBox Grid.Row="2" Name="NotesListBox" 
                          Style="{StaticResource NotesListBoxStyle}"
                          SelectionChanged="NotesListBox_SelectionChanged"></ListBox>
