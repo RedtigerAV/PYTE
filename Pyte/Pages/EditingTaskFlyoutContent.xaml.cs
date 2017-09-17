@@ -157,7 +157,6 @@ namespace Pyte.Pages {
         private void MarksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             ListBox markList = (ListBox)(sender);
             MiniMark selectedMark = (MiniMark)markList.SelectedItem;
-            //MessageBox.Show((selectedMark == null)? "Че за хрень1?": selectedMark.MarkText + "1");
             NeedToNotifySelectedItem.Instance.SelectedMark = selectedMark;
 
         }
