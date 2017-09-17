@@ -139,7 +139,6 @@ namespace Pyte.Pages {
             if (markList == null)
                 return;
             MiniMark selectedMark = (MiniMark)markList.SelectedItem;
-            //MessageBox.Show((selectedMark == null) ? "Че за хрень2?" : selectedMark.MarkText + "2");
             NeedToNotifySelectedItem.Instance.SelectedMark = selectedMark;
 
         }
